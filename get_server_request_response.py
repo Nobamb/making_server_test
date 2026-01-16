@@ -7,6 +7,9 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 # GetServerRequestResponse
 
 class GetServerRequestResponse(BaseHTTPRequestHandler):
+    # POST 메소드 테스트
+    # do_POST 메소드
+    # def do_POST(self):
     # GET요청을 받았을 때의 메소드
     # do_GET 메소드
     def do_GET(self):
@@ -20,10 +23,20 @@ class GetServerRequestResponse(BaseHTTPRequestHandler):
         # header 종료
         self.end_headers()
         
-        # 요청 받아오기
-        print(f"서버 요청 {self.request}")
-        # 응답 받아오기
-        print(f"서버 응답 {self.responses}")
+        # # 요청 받아오기
+        # print(f"서버 요청 {self.request}")
+        # # 응답 받아오기
+        # print(f"서버 응답 {self.responses}")
+        
+        # 메서드, 경로,헤더 출력
+        # http 메서드 : command
+        print(f"HTTP 메서드 {self.command}")
+        # 경로 : path
+        print(f"경로 {self.path}")
+        # 헤더 : headers
+        print(f"헤더 {self.headers}")
+        
+        
         # 서버 실행 완료 출력
         print("서버 실행 완료")
         
@@ -41,3 +54,6 @@ server = HTTPServer(("",port),GetServerRequestResponse)
 
 # server에서 serve_forever 실행
 server.serve_forever()
+print("서버 종료전")
+server.server_close()
+print("서버 종료")
