@@ -36,7 +36,7 @@ port = 8000
 # httpserver에서 forever_serve 메소드 실행 시
 # ServerTest 클래스 내부에서 오버라이드한
 # do_GET 메소드를 찾아서 사용하기 위해 ServerTest를 받음(동적 디스패치)
-HTTPServer(("",port), ServerTest)
+server = HTTPServer(("",port), ServerTest)
 
 # forever_serve 메소드 실행
-HTTPServer.serve_forever()
+server.serve_forever()
