@@ -21,10 +21,23 @@ class GetServerRequestResponse(BaseHTTPRequestHandler):
         self.end_headers()
         
         # 요청 받아오기
-        print(self.request)
+        print(f"서버 요청 {self.request}")
         # 응답 받아오기
-        print(self.responses)
+        print(f"서버 응답 {self.responses}")
         # 서버 실행 완료 출력
         print("서버 실행 완료")
         
         
+# 포트 지정 8000
+port = 8000
+
+# 서버 실행
+# HTTPServer 생성자 생성
+# ("",port) => 모든 ip를 받고 8000번 포트 받기
+# GetServerRequestResponse 받아서
+# serve_forever로 do_GET 메소드 실행
+
+server = HTTPServer(("",port),GetServerRequestResponse)
+
+# server에서 serve_forever 실행
+server.serve_forever()
