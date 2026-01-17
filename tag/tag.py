@@ -38,8 +38,8 @@ def tag(tagname, types=[],values=[]):
 
 
 
-# 테스트
-img = tag("img", ["src"], ["https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"])
+# # 테스트
+# img = tag("img", ["src"], ["https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"])
 
-# 출력
-print(img)
+# # 출력
+# print(img)
