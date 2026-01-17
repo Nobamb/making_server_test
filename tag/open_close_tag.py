@@ -19,8 +19,29 @@ def open_close_tag(tag_name, types=[],values=[],childrens=[]):
             result += children
         
     
+    # children_plus 실행
+    children_plus(childrens)
     # result에 닫는 태그 추가
     result += f"</{tag_name}>"
     # result 리턴
     return result
 
+# 테스트
+# html
+# 태그명만
+html = open_close_tag("html")
+# div
+# 태그명과 속성과 속성값
+div = open_close_tag("div",types=["class"],values=["wid100"])
+# p
+# 태그명과 내용
+p = open_close_tag("p",childrens=["내용"])
+# span
+# 태그명과 속성과 속성값, 그리고 내용
+span = open_close_tag("span",types=["class"],values=["colorRed"],childrens=["span"])
+
+# 출력
+print(html)
+print(div)
+print(p)
+print(span)
