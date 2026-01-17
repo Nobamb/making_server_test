@@ -81,6 +81,10 @@ class AssembleHtmlServer(BaseHTTPRequestHandler):
         # 값을 더함
         result = doctype + html
 
+
+        # 응답 테스트
+        print("응답을 받았습니다.")
+
         # 더한 값을 쓰도록 함(인코딩하여 utf-8로 변경)
         self.wfile.write(result.encode("utf-8"))
 
