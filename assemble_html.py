@@ -43,7 +43,7 @@ class AssembleHtmlServer(BaseHTTPRequestHandler):
         # body
         # open_close_tag
         # children 받음
-        body = open_close_tag("body")
+        body = open_close_tag("body",[h1, p])
 
         # meta데이터
         # open_tag
@@ -75,7 +75,7 @@ class AssembleHtmlServer(BaseHTTPRequestHandler):
         # 속성값 ko
         # children : head, body
         html = open_close_tag(
-            "html", types=["lang"], values=["ko"], childrens=["head", "body"]
+            "html", types=["lang"], values=["ko"], childrens=[head, body]
         )
 
         # 값을 더함
