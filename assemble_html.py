@@ -43,7 +43,7 @@ class AssembleHtmlServer(BaseHTTPRequestHandler):
         # body
         # open_close_tag
         # children 받음
-        body = open_close_tag("body",[h1, p])
+        body = open_close_tag("body",childrens=[h1, p])
 
         # meta데이터
         # open_tag
