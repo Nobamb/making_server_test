@@ -37,7 +37,7 @@ def open_tag(tag_name, types=[],values=[]):
     return result
 
 
-# 테스트
-doctype = open_tag("!DOCTYPE",["html"])
-# 출력
-print(doctype)
+# # 테스트
+# doctype = open_tag("!DOCTYPE",["html"])
+# # 출력
+# print(doctype)
