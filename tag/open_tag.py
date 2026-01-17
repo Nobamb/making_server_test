@@ -25,7 +25,7 @@ def open_tag(tag_name, types=[],values=[]):
                 result += f" {type_name}"
                 
         # result 마무리
-        result += "/>"
+        result += ">"
         
         # result 리턴
         return result
@@ -37,3 +37,7 @@ def open_tag(tag_name, types=[],values=[]):
     return result
 
 
+# 테스트
+doctype = open_tag("!DOCTYPE",["html"])
+# 출력
+print(doctype)
