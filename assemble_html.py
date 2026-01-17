@@ -7,7 +7,7 @@ class AssembleHtmlServer(BaseHTTPRequestHandler):
     # do_GET 메서드 재정의
     def do_GET(self):
         # 응답코드 200 전달
-        self.send_header(200)
+        self.send_response(200)
         # 헤더 전달
         # content-type
         # text/html; charset = utf-8
