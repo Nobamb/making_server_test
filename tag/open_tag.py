@@ -18,7 +18,7 @@ def open_tag(tag_name, types=[],values=[]):
             # 만약에 values가 list면서 빈배열이 아니면
             if type(values) == list and values != []:
                 # type_name에 values값(index)가져옴
-                result += f" {type_name}={values[index]}"
+                result += f' {type_name}="{values[index]}"'
             # values가 list면서 빈배열이면
             if type(values) == list and values == []:
                 # type_name만 추가
