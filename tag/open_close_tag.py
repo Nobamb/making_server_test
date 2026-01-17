@@ -1,6 +1,6 @@
 # open_close_tag(열고 닫는 태그)
 # open_tag 가져옴(여는 태그에서 사용)
-from open_tag import open_tag
+from .open_tag import open_tag
 # tag_name : 태그 이름
 # types : 타입명(배열)
 # values : 타입값(배열)
