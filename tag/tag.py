@@ -20,7 +20,7 @@ def tag(tagname, types=[],values=[]):
             if type(values) == list and values != []:
                 # types에 비슷한 인덱스에 해당하는
                 # 값들을 result에 지정
-                result += f" {type_name} = {values[index]}"
+                result += f' {type_name}="{values[index]}"'
             # 만약에 values가 배열이고, 빈 배열이면
             if type(values) == list and values == []:
                 # type_name만 지정
