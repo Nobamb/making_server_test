@@ -33,7 +33,7 @@ def basic_tag_complete(title_name="문서", add_head_tags=[], add_body_tags=[]):
     # body 태그
     # open_close_tag
     # children = add_body_tags
-    body = open_close_tag("body", childrens=[add_body_tags])
+    body = open_close_tag("body", childrens=add_body_tags)
 
     # head 태그
 
@@ -69,7 +69,7 @@ def basic_tag_complete(title_name="문서", add_head_tags=[], add_body_tags=[]):
     # 태그명 head
     # childrens = meta_charset, meta_name_content, title
     head = open_close_tag(
-        "head", childrens=[meta_charset, meta_name_content, title, add_head_tags]
+        "head", childrens=[meta_charset, meta_name_content, title] + add_head_tags
     )
 
     # html 태그
@@ -87,13 +87,16 @@ def basic_tag_complete(title_name="문서", add_head_tags=[], add_body_tags=[]):
 
 
 # 실행 테스트
-test = basic_tag_complete(
-    title_name="테스트",
-    add_body_tags=[
-        open_close_tag("h1", childrens=["안녕"]),
-        open_close_tag("p", childrens=["반가워"]),
-    ],
-)
+
+test = basic_tag_complete()
+
+# test = basic_tag_complete(
+#     title_name="테스트",
+#     add_body_tags=[
+#         open_close_tag("h1", childrens=["안녕"]),
+#         open_close_tag("p", childrens=["반가워"]),
+#     ],
+# )
 
 # 출력
 print(test)
