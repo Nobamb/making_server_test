@@ -33,17 +33,24 @@ class AssembleHtmlServer(BaseHTTPRequestHandler):
         # h1
         # open_close_tag
         # 내용은 제목
-        h1 = open_close_tag("h1",childrens=["제목"])
+        h1 = open_close_tag("h1", childrens=["제목"])
 
         # p
         # open_close_tag
         # 내용은 내용
-        p = open_close_tag("p",childrens=["내용"])
-
+        p = open_close_tag("p", childrens=["내용"])
+        # script 태그
+        # 브라우저 콘솔을 통해
+        # 연결이 완료되었다고 알리기 위함
+        # open_close_tag
+        # 내용 : 응답을 받았습니다.
+        script = open_close_tag(
+            "script", childrens=['console.log("응답을 받았습니다.")']
+        )
         # body
         # open_close_tag
         # children 받음
-        body = open_close_tag("body",childrens=[h1, p])
+        body = open_close_tag("body", childrens=[h1, p, script])
 
         # meta데이터
         # open_tag
@@ -55,32 +62,37 @@ class AssembleHtmlServer(BaseHTTPRequestHandler):
         # meta name content
         # 속성 name content
         # 속성값 viewport width=device-width, initial-scale=1.0
-        meta_name_content = open_tag("meta", types=["name","content"], values=["viewport", "width=device-width, initial-scale=1.0"])
+        meta_name_content = open_tag(
+            "meta",
+            types=["name", "content"],
+            values=["viewport", "width=device-width, initial-scale=1.0"],
+        )
 
         # open_close_Tag
         # title
         # 제목
         # 제목은 html 서버 조립 테스트
-        title = open_close_tag("title",childrens=["html 서버 조립 테스트"])
+        title = open_close_tag("title", childrens=["html 서버 조립 테스트"])
 
         # head
         # open_close_tag
         # children받음
         # meta_charset, meta_name_content, title
-        head = open_close_tag("head",childrens=[meta_charset, meta_name_content, title])
+        head = open_close_tag(
+            "head", childrens=[meta_charset, meta_name_content, title]
+        )
 
         # html 전달
         # open_close_tag
         # 속성 lang
         # 속성값 ko
-        # children : head, body
+        # children : head, body, script
         html = open_close_tag(
             "html", types=["lang"], values=["ko"], childrens=[head, body]
         )
 
         # 값을 더함
         result = doctype + html
-
 
         # 응답 테스트
         print("응답을 받았습니다.")
