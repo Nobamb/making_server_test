@@ -1,0 +1,51 @@
+@charset "UTF-8";
+/* UTF-8 설정 */
+
+/* 기본 값 설정 */
+
+*{
+
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+
+ul{
+
+    list-style: none;
+
+}
+
+
+/* 회색 */
+
+.gray-bbb{
+
+    background-color: #bbb;
+
+}
+
+/* 가로 지정 */
+
+.width-1000px{
+
+    width : 1000px;
+
+}
+
+/* 세로 지정 */
+
+.height-1000px{
+
+    height:1000px;
+
+}
+
+
+/* 삼각형 */
+.triangle{
+
+    clip-path: polygon(50% 0%,0% 100%, 100% 100%);
+
+}
