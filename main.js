@@ -17,15 +17,51 @@ const body = document.body
 
 // body에서 div를 찾음
 // div_in_ul(ul들이 존재하는 div)
-const div_in_ul = body.children[3]
+const divInUl = body.children[3]
 
+
+
+// ul_triangle
+const ulTriangle = divInUl.children[0]
+
+// ul_text
+const ulText = divInUl.children[1]
+
+
+// triangle 내부의 li의 인덱스
+// 기본값 undifined
+let triangleIndex = undefined;
 
 
 
 // div_in_ul에 마우스를 올렸을 때
-div_in_ul.addEventListener("mouseenter",()=> {
-    // 알람이 뜨도록 함
-    alert("body 동작 테스트 성공")
+divInUl.addEventListener("mouseenter",(e)=> {
+    
+
+
+    // 올려놓은 li(ul_triangle)의 index를 저장하고
+    triangleIndex = e.target.closest("ulTriangle")
+
+    // ul_text의 class를 off=> on으로 변경
+    ulText.classList.remove("off")
+    ulText.classList.add("on")
+
+    // (콜백, ul_text의 li)
+    // 그 index의 값에 맞추어 ul_text의 
+    // index에 해당하는 li의 class를 
+    // opacity0 => opacity100으로 변경
+
+
+
+
 
 })
 
+
+// div_in_ul에 마우스를 뗏을 때
+divInUl.addEventListener("mouseleave",()=>{
+
+    // 테스트(마우스가 나갔다고 확인)
+    console.log("마우스뗌")
+
+})
