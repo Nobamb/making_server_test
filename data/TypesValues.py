@@ -19,7 +19,7 @@ class TypesValues:
     # 타입값=================================================================================
     
     # 글자를 가운데로 정렬(li_title에 사용)
-    text_align_center = "text-align-center"
+    li_title = "text-align-center"
     
     # 매슬로우의 욕구 이론 피라미드 5단계 속성값
     li_level5 = "width100per-height20per back-color-blue vertical-horizental-center"
