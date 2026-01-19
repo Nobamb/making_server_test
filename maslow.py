@@ -11,6 +11,12 @@ from tag.open_tag import open_tag
 from tag.open_close_tag import open_close_tag
 
 
+# 데이터들 가져오기
+from data.TagName import TagName
+from data.TagText import TagText
+from data.TypesValues import TypesValues
+
+
 # basehttp 클래스 오버라이드
 # maslow_server
 class MaslowServer(BaseHTTPRequestHandler):
@@ -30,27 +36,20 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 헤더 전송 종료
             self.end_headers()
 
-            # br 태그
-            # open_tag
-            br = open_tag("br")
-
-
             # h1 태그
             # open_close_tag
             # 내용 : 매슬로우의 욕구이론
             h1 = open_close_tag(
-                "h1",
-                childrens=["매슬로우의 욕구 이론"],
+                TagName.h1,
+                childrens=[TagText.h1],
             )
 
             # h2 태그
             # open_close_tag
             # 내용 : 매슬로우의 욕구 이론에 대해 정리해놓은 것이고 피라미드를 통해 각 단계들을 5단계로 나타내보았다.
             h2 = open_close_tag(
-                "h2",
-                childrens=[
-                    "매슬로우의 욕구 이론에 대해 정리해놓은 것이고 피라미드를 통해 각 단계들을 5단계로 나타내보았다."
-                ],
+                TagName.h2,
+                childrens=[TagText.h2],
             )
 
             # p 태그
@@ -58,10 +57,8 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 내용 : 피라미드의 형태로 위는 최상위의 욕구, 아래는 최하위의 욕구로써, 최하위 1단계에서부터 최상위 5단계까지 이루어지며, 1단계부터 기본적인 생존 욕구, 2단계는 안전에 대한 욕구, 3단계는 애정, 소속에 대한 욕구, 4단계는 인정욕구, 5단계는 자아실현의 욕구로 이루어져있다. 개발자의 성장 단계에 비유하자면 1단계는 잠을 잘수있는 만큼 자는 기본권은 보장된 개발 환경 2단계는 개발을 통해 나의 작업물을 만들었을 때, 미래의 위험성을 이겨내기 위해 현재 발생할 수 있는 내재된 오류 검사 및 버그 수정과 같은 완성도를 끌어올리는 행위 3단계는 진정한 개발자로써 동료 개발자들과의 생각을 공유해보면서 지식의 성장을 이루는 것 4단계는 개발자들 사이에서도 나의 실력이나 서비스를 인정받는 것이고 5단계는 나의 힘으로 나의 서비스를 성공적으로 배포하고 수익도 버는 것이다. 그리고 매슬로우의 주장으로는 주로 낮은 단계에서부터 높은 단계를 이루는 것이 좋다는 이론이지만, 나의 생각은 다소 다르기도 하다. 어떤 사람은 1단계인 먹고자는 행위만을 실천하기 위해 자아실현의 욕구 안전을 포기하면서 극한직업을 하는 경우도 있다. 매슬로우의 욕구에 따르면 단계를 어기지 않은 행위이지만 실제로는 그 사람의 인생은 건강하다고 보기 어렵다. 결국 나의 생각은  매슬로우의 욕구는 순차적으로 이룬다고 해서 절대적으로 옳은 것이 아니라고 보며, 오히려 순차적인 것을 따르려는 것은 욕구에 대한 한계를 정하는 것에 불과하다고 생각한다. 그렇기에 자아실현의 욕구는 단계의 개념이 아닌 가장 큰 절대적인 욕구라고 생각하고 나머지의 욕구들 또한 단계로써 정해질 것이 아닌 인간이 인간답게 살기위한 조건 및 실현되었을 때의 행복도의 차이 정도로 정의하는 것이 맞다고 생각한다.
 
             p = open_close_tag(
-                "p",
-                childrens=[
-                    "피라미드의 형태로 위는 최상위의 욕구, 아래는 최하위의 욕구로써, 최하위 1단계에서부터 최상위 5단계까지 이루어지며, 1단계부터 기본적인 생존 욕구, 2단계는 안전에 대한 욕구, 3단계는 애정, 소속에 대한 욕구, 4단계는 인정욕구, 5단계는 자아실현의 욕구로 이루어져있다. 개발자의 성장 단계에 비유하자면 1단계는 잠을 잘수있는 만큼 자는 기본권은 보장된 개발 환경 2단계는 개발을 통해 나의 작업물을 만들었을 때, 미래의 위험성을 이겨내기 위해 현재 발생할 수 있는 내재된 오류 검사 및 버그 수정과 같은 완성도를 끌어올리는 행위 3단계는 진정한 개발자로써 동료 개발자들과의 생각을 공유해보면서 지식의 성장을 이루는 것 4단계는 개발자들 사이에서도 나의 실력이나 서비스를 인정받는 것이고 5단계는 나의 힘으로 나의 서비스를 성공적으로 배포하고 수익도 버는 것이다. 그리고 매슬로우의 주장으로는 주로 낮은 단계에서부터 높은 단계를 이루는 것이 좋다는 이론이지만, 나의 생각은 다소 다르기도 하다. 어떤 사람은 1단계인 먹고자는 행위만을 실천하기 위해 자아실현의 욕구 안전을 포기하면서 극한직업을 하는 경우도 있다. 매슬로우의 욕구에 따르면 단계를 어기지 않은 행위이지만 실제로는 그 사람의 인생은 건강하다고 보기 어렵다. 결국 나의 생각은  매슬로우의 욕구는 순차적으로 이룬다고 해서 절대적으로 옳은 것이 아니라고 보며, 오히려 순차적인 것을 따르려는 것은 욕구에 대한 한계를 정하는 것에 불과하다고 생각한다. 그렇기에 자아실현의 욕구는 단계의 개념이 아닌 가장 큰 절대적인 욕구라고 생각하고 나머지의 욕구들 또한 단계로써 정해질 것이 아닌 인간이 인간답게 살기위한 조건 및 실현되었을 때의 행복도의 차이 정도로 정의하는 것이 맞다고 생각한다."
-                ],
+                TagName.p,
+                childrens=[TagText.p],
             )
 
             # li_level5_title
@@ -71,7 +68,12 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 타입명 class
             # 타입값 text-align-center
             # 가장 작은 글자 크기이므로 들여쓰기용 br 추가
-            li_level5_title = open_close_tag("h3", types=["class"],values=["text-align-center"],childrens=[f"5단계,{br}자아실현의{br}욕구"])
+            li_level5_title = open_close_tag(
+                TagName.h3,
+                types=[TypesValues.className],
+                values=[TypesValues.li_title],
+                childrens=[TagText.li_level_title[0]],
+            )
 
             # li 태그
             # open_close_tag
@@ -80,12 +82,10 @@ class MaslowServer(BaseHTTPRequestHandler):
 
             # 내용은 "5단계: 자아실현의 욕구, 무언가에 대해 스스로 실현을 하기 위한 욕구이며, 보통 자신의 꿈, 그리고 목표와 관련되어있다. 나에게 있어서 자아실현의 욕구는 작게는 매슬로우의 욕구를 서버 사이드 렌더링을 통해 나타내는 것부터 시작해서 매슬로우의 욕구를 서버 구조를 예쁘게도 작성해보고, 크게는 나의 서비스를 만들어보면서 수익도 내보는 것이다."
             li_level5 = open_close_tag(
-                "li",
+                TagName.li,
                 # 클래스 속성 가로100% 및 세로 20%, 배경 파랑
-                types=["class"],
-                values=[
-                    "width100per-height20per back-color-blue vertical-horizental-center"
-                ],
+                types=[TypesValues.className],
+                values=[TypesValues.li_level5],
                 childrens=[li_level5_title],
             )
 
@@ -95,20 +95,24 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 태그명은 h3
             # 타입명 class
             # 타입값 text-align-center
-            li_level4_title = open_close_tag("h3", types=["class"],values=["text-align-center"],childrens=[f"4단계,{br}인정의 욕구"])
+            li_level4_title = open_close_tag(
+                TagName.h3,
+                types=[TypesValues.className],
+                values=[TypesValues.li_title],
+                childrens=[TagText.li_level_title[1]],
+            )
 
             # li 태그
             # open_close_tag
             # 타입명 class
             # 속성값 width100per-height20per back-color-blue vertical-horizental-center
-            
-            
+
             # 내용은 "4단계 : 인정의 욕구, 남들에게 인정받기 위한 욕구이며, 내가 스스로 해냈을 때 인정받은 적도 있고(자아실현의 욕구도 같이 실현되는 요인), 남이 하라는 것에 대해서 한 것에 대해서도 인정욕구를 실현(단 자아실현의 욕구까진 도달할 수 없음)할 수 있다. 나에게 있어서 인정 욕구란 남에게 적어도 내가 해왔던 노력이나 재능들에 대해 무시당하지 않는 것부터 시작해서 남조차도 나를 인정하거나 존경하는 것이다. 예를 들어서 이전에 클로저의 개념을 정리하여 설명을 했을 때 관련 분야에서 굵직하게 일을 했던 사람들도 나의 설명을 들으러 온것에 대해 인정욕구를 느끼기도 하였다."
             li_level4 = open_close_tag(
-                "li",
-                # 클래스 속성 가로100% 및 세로 20%, 배경 초록
-                types=["class"],
-                values=["width100per-height20per back-color-green vertical-horizental-center"],
+                TagName.li,
+                # 클래스 속성 가로100% 및 세로 20%, 배경 파랑
+                types=[TypesValues.className],
+                values=[TypesValues.li_level4],
                 childrens=[li_level4_title],
             )
 
@@ -119,9 +123,11 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 타입명 class
             # 타입값 text-align-center
             li_level3_title = open_close_tag(
-                "h3", types=["class"],values=["text-align-center"],childrens=[f"3단계,{br}소속감 또는 애정의 욕구"]
+                TagName.h3,
+                types=[TypesValues.className],
+                values=[TypesValues.li_title],
+                childrens=[TagText.li_level_title[2]],
             )
-
 
             # li 태그
             # open_close_tag
@@ -130,23 +136,25 @@ class MaslowServer(BaseHTTPRequestHandler):
 
             # 내용은 li_level3_title, "3단계 : 소속감 또는 애정의 욕구, 어떤 조직 내의 일원으로 인정을 받거나 타인과 교류 관계를 맺는 행위에서 얻는 욕구이다. 나는 주로 나 자신이 개발자라는 생각을 하게 될 때 소속감에 관해서 욕구를 얻었다. 갓 성인이 되었을 때는 생산직이라는 소속에 있었지만 오히려 내 인생의 오점이라고도 생각이 들 정도의 최악의 소속감을 느껴왔고, 이전에 국비학원에서 웹 퍼블리싱에 대해 배울 때에는 당시의 강사님은 나에게 디자이너라는 소속감을 주었다. 물론 영상 편집도 해온 입장에서는 디자이너가 싫지만은 않았지만 개발자라는 목표를 가지고 있던 나에게는 딱히 욕구 실현이 될 정도의 소속감은 들지 않았다. 하지만 현재 개발자라는 소속감에 들게 되었고, 그 덕분에 내가 주말이든 쉬는 날이든 코딩을 하면서 나 자신이 엄연한 개발자라는 자부감을 가지고 있고, 소속감에 대한 욕구를 실현하고 있다."
             li_level3 = open_close_tag(
-                "li",
-                # 클래스 속성 가로100% 및 세로 20%, 배경 노랑
-                types=["class"],
-                values=["width100per-height20per back-color-yellow vertical-horizental-center"],
+                TagName.li,
+                # 클래스 속성 가로100% 및 세로 20%, 배경 파랑
+                types=[TypesValues.className],
+                values=[TypesValues.li_level3],
                 childrens=[li_level3_title],
             )
 
-            # li_level3_title
+            # li_level2_title
             # 내용은 "2단계, 안전과 관련된 욕구"
             # open_close_tag
             # 태그명은 h3
             # 타입명 class
             # 타입값 text-align-center
             li_level2_title = open_close_tag(
-                "h3", types=["class"],values=["text-align-center"],childrens=[f"2단계,{br}안전과 관련된 욕구"]
+                TagName.h3,
+                types=[TypesValues.className],
+                values=[TypesValues.li_title],
+                childrens=[TagText.li_level_title[3]],
             )
-
 
             # li 태그
             # open_close_tag
@@ -155,10 +163,10 @@ class MaslowServer(BaseHTTPRequestHandler):
 
             # 내용은 li_level2_title,"2단계 : 안전에 관한 욕구, 앞으로의 일에 대해 두려움을 느끼지 말고 생명에 위협이 되는 일이 없어졌을 때에 해당 욕구를 느낀다. 나는 주로 가끔 전직장에서 근무할 때 2~3주간 제대로 쉬지도 못하고 일을 한 경험이 있었다. 게다가 상사들이 나에게 스트레스도 주면서 일은 가끔 위험한 것도 하거나 잠도 잘 못자는 경우도 생기는 등 정신적으로나 육체적으로까지도 앞으로 나아질까하는 걱정과 두려움에 시달리면서 생명에 대한 위협을 많이 생각하기도 하였다. 그때와 비교하면 지금의 나는 이미 그 회사를 나갔기에 위협적인 상황은 발생하지 않고 안전하다 느낀다."
             li_level2 = open_close_tag(
-                "li",
-                # 클래스 속성 가로100% 및 세로 20%, 배경 주황
-                types=["class"],
-                values=["width100per-height20per back-color-orange vertical-horizental-center"],
+                TagName.li,
+                # 클래스 속성 가로100% 및 세로 20%, 배경 파랑
+                types=[TypesValues.className],
+                values=[TypesValues.li_level2],
                 childrens=[li_level2_title],
             )
 
@@ -169,22 +177,23 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 타입명 class
             # 타입값 text-align-center
             li_level1_title = open_close_tag(
-                "h3", types=["class"],values=["text-align-center"],childrens=[f"1단계,{br}기본 인권과 관련된 욕구"]
+                TagName.h3,
+                types=[TypesValues.className],
+                values=[TypesValues.li_title],
+                childrens=[TagText.li_level_title[4]],
             )
-
 
             # li 태그
             # open_close_tag
             # 타입명 class
             # 속성값 width100per-height20per back-color-blue vertical-horizental-center
-        
 
             # 내용은 li_level1_title,"1단계 : 기본 인권과 관련된 욕구, 먹고 자고 쉬는 행위를 말하며, 이런 기본적인 것들에 대해 제대로 누리게 될 때 욕구를 느낀다. 나는 전에 직장에 있을 때에도 그렇고 3달 전까지만 해도 잠에 대한 경각심을 잘 느끼지 못하였기에 잠을 최소한만 자고 하루를 최대한 누려보려고하였다. 하지만 잠이 왜 중요한지를 다시 한번 상기를 해보게 되었고, 최근에는 7~8시간은 자려고 한다. 당연히 이전에 잠을 못잤을 때보다는 더 개운하고 정신적으로 힘든 경향도 덜하게 되었다. 반대로 돈과 관련된 욕구는 버려가고 있다. 이전에는 그냥 먹고 살기 위해서 버텨가면서 돈을 벌었다면 최근에는 돈에 얽매이지 않고 내가 만족할 수 있도록 방향성을 잡아가고 살아가고 있다. 돈이 인간의 기본욕구를 충족시켜줄 것 같지만 꼭 그렇지도 않다. 돈을 벌기 위해 오히려 인간의 기본욕구를 버리게 될 수도 있기 때문이다."
             li_level1 = open_close_tag(
-                "li",
-                # 클래스 속성 가로100% 및 세로 20%, 배경 빨강
-                types=["class"],
-                values=["width100per-height20per back-color-red vertical-horizental-center"],
+                TagName.li,
+                # 클래스 속성 가로100% 및 세로 20%, 배경 파랑
+                types=[TypesValues.className],
+                values=[TypesValues.li_level1],
                 childrens=[li_level1_title],
             )
 
@@ -195,11 +204,9 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 타입값 gray-bbb, triangle full-size .flex-vertical-arrange position-absolute
 
             ul_triangle = open_close_tag(
-                "ul",
-                types=["class"],
-                values=[
-                    "triangle back-color-gray-bbb full-size flex-vertical-arrange position-absolute"
-                ],
+                TagName.ul,
+                types=[TypesValues.className],
+                values=[TypesValues.ul_triangle],
                 childrens=[li_level5, li_level4, li_level3, li_level2, li_level1],
             )
 
@@ -222,12 +229,10 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 내용 : "5단계: 자아실현의 욕구, 무언가에 대해 스스로 실현을 하기 위한 욕구이며, 보통 자신의 꿈, 그리고 목표와 관련되어있다. 나에게 있어서 자아실현의 욕구는 작게는 매슬로우의 욕구를 서버 사이드 렌더링을 통해 나타내는 것부터 시작해서 매슬로우의 욕구를 서버 구조를 예쁘게도 작성해보고, 크게는 나의 서비스를 만들어보면서 수익도 내보는 것이다."
 
             li_level5_text = open_close_tag(
-                "li",
-                types=["class"],
-                values=["width100per-height20per opacity0"],
-                childrens=[
-                    "5단계: 자아실현의 욕구, 무언가에 대해 스스로 실현을 하기 위한 욕구이며, 보통 자신의 꿈, 그리고 목표와 관련되어있다. 나에게 있어서 자아실현의 욕구는 작게는 매슬로우의 욕구를 서버 사이드 렌더링을 통해 나타내는 것부터 시작해서 매슬로우의 욕구를 서버 구조를 예쁘게도 작성해보고, 크게는 나의 서비스를 만들어보면서 수익도 내보는 것이다."
-                ],
+                TagName.li,
+                types=[TypesValues.className],
+                values=[TypesValues.li_text],
+                childrens=[TagText.li_level_text[0]],
             )
 
             # li_level4_text
@@ -239,12 +244,10 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 내용 : "4단계 : 인정의 욕구, 남들에게 인정받기 위한 욕구이며, 내가 스스로 해냈을 때 인정받은 적도 있고(자아실현의 욕구도 같이 실현되는 요인), 남이 하라는 것에 대해서 한 것에 대해서도 인정욕구를 실현(단 자아실현의 욕구까진 도달할 수 없음)할 수 있다. 나에게 있어서 인정 욕구란 남에게 적어도 내가 해왔던 노력이나 재능들에 대해 무시당하지 않는 것부터 시작해서 남조차도 나를 인정하거나 존경하는 것이다. 예를 들어서 이전에 클로저의 개념을 정리하여 설명을 했을 때 관련 분야에서 굵직하게 일을 했던 사람들도 나의 설명을 들으러 온것에 대해 인정욕구를 느끼기도 하였다."
 
             li_level4_text = open_close_tag(
-                "li",
-                types=["class"],
-                values=["width100per-height20per opacity0"],
-                childrens=[
-                    "4단계 : 인정의 욕구, 남들에게 인정받기 위한 욕구이며, 내가 스스로 해냈을 때 인정받은 적도 있고(자아실현의 욕구도 같이 실현되는 요인), 남이 하라는 것에 대해서 한 것에 대해서도 인정욕구를 실현(단 자아실현의 욕구까진 도달할 수 없음)할 수 있다. 나에게 있어서 인정 욕구란 남에게 적어도 내가 해왔던 노력이나 재능들에 대해 무시당하지 않는 것부터 시작해서 남조차도 나를 인정하거나 존경하는 것이다. 예를 들어서 이전에 클로저의 개념을 정리하여 설명을 했을 때 관련 분야에서 굵직하게 일을 했던 사람들도 나의 설명을 들으러 온것에 대해 인정욕구를 느끼기도 하였다."
-                ],
+                TagName.li,
+                types=[TypesValues.className],
+                values=[TypesValues.li_text],
+                childrens=[TagText.li_level_text[1]],
             )
 
             # li_level3_text
@@ -256,12 +259,10 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 내용 : "3단계 : 소속감 또는 애정의 욕구, 어떤 조직 내의 일원으로 인정을 받거나 타인과 교류 관계를 맺는 행위에서 얻는 욕구이다. 나는 주로 나 자신이 개발자라는 생각을 하게 될 때 소속감에 관해서 욕구를 얻었다. 갓 성인이 되었을 때는 생산직이라는 소속에 있었지만 오히려 내 인생의 오점이라고도 생각이 들 정도의 최악의 소속감을 느껴왔고, 이전에 국비학원에서 웹 퍼블리싱에 대해 배울 때에는 당시의 강사님은 나에게 디자이너라는 소속감을 주었다. 물론 영상 편집도 해온 입장에서는 디자이너가 싫지만은 않았지만 개발자라는 목표를 가지고 있던 나에게는 딱히 욕구 실현이 될 정도의 소속감은 들지 않았다. 하지만 현재 개발자라는 소속감에 들게 되었고, 그 덕분에 내가 주말이든 쉬는 날이든 코딩을 하면서 나 자신이 엄연한 개발자라는 자부감을 가지고 있고, 소속감에 대한 욕구를 실현하고 있다."
 
             li_level3_text = open_close_tag(
-                "li",
-                types=["class"],
-                values=["width100per-height20per opacity0"],
-                childrens=[
-                    "3단계 : 소속감 또는 애정의 욕구, 어떤 조직 내의 일원으로 인정을 받거나 타인과 교류 관계를 맺는 행위에서 얻는 욕구이다. 나는 주로 나 자신이 개발자라는 생각을 하게 될 때 소속감에 관해서 욕구를 얻었다. 갓 성인이 되었을 때는 생산직이라는 소속에 있었지만 오히려 내 인생의 오점이라고도 생각이 들 정도의 최악의 소속감을 느껴왔고, 이전에 국비학원에서 웹 퍼블리싱에 대해 배울 때에는 당시의 강사님은 나에게 디자이너라는 소속감을 주었다. 물론 영상 편집도 해온 입장에서는 디자이너가 싫지만은 않았지만 개발자라는 목표를 가지고 있던 나에게는 딱히 욕구 실현이 될 정도의 소속감은 들지 않았다. 하지만 현재 개발자라는 소속감에 들게 되었고, 그 덕분에 내가 주말이든 쉬는 날이든 코딩을 하면서 나 자신이 엄연한 개발자라는 자부감을 가지고 있고, 소속감에 대한 욕구를 실현하고 있다."
-                ],
+                TagName.li,
+                types=[TypesValues.className],
+                values=[TypesValues.li_text],
+                childrens=[TagText.li_level_text[2]],
             )
 
             # li_level2_text
@@ -273,12 +274,10 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 내용 : "2단계 : 안전에 관한 욕구, 앞으로의 일에 대해 두려움을 느끼지 말고 생명에 위협이 되는 일이 없어졌을 때에 해당 욕구를 느낀다. 나는 주로 가끔 전직장에서 근무할 때 2~3주간 제대로 쉬지도 못하고 일을 한 경험이 있었다. 게다가 상사들이 나에게 스트레스도 주면서 일은 가끔 위험한 것도 하거나 잠도 잘 못자는 경우도 생기는 등 정신적으로나 육체적으로까지도 앞으로 나아질까하는 걱정과 두려움에 시달리면서 생명에 대한 위협을 많이 생각하기도 하였다. 그때와 비교하면 지금의 나는 이미 그 회사를 나갔기에 위협적인 상황은 발생하지 않고 안전하다 느낀다."
 
             li_level2_text = open_close_tag(
-                "li",
-                types=["class"],
-                values=["width100per-height20per opacity0"],
-                childrens=[
-                    "2단계 : 안전에 관한 욕구, 앞으로의 일에 대해 두려움을 느끼지 말고 생명에 위협이 되는 일이 없어졌을 때에 해당 욕구를 느낀다. 나는 주로 가끔 전직장에서 근무할 때 2~3주간 제대로 쉬지도 못하고 일을 한 경험이 있었다. 게다가 상사들이 나에게 스트레스도 주면서 일은 가끔 위험한 것도 하거나 잠도 잘 못자는 경우도 생기는 등 정신적으로나 육체적으로까지도 앞으로 나아질까하는 걱정과 두려움에 시달리면서 생명에 대한 위협을 많이 생각하기도 하였다. 그때와 비교하면 지금의 나는 이미 그 회사를 나갔기에 위협적인 상황은 발생하지 않고 안전하다 느낀다."
-                ],
+                TagName.li,
+                types=[TypesValues.className],
+                values=[TypesValues.li_text],
+                childrens=[TagText.li_level_text[3]],
             )
             # li_level1_text
             # li 태그
@@ -289,12 +288,10 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 내용 : "1단계 : 기본 인권과 관련된 욕구, 먹고 자고 쉬는 행위를 말하며, 이런 기본적인 것들에 대해 제대로 누리게 될 때 욕구를 느낀다. 나는 전에 직장에 있을 때에도 그렇고 3달 전까지만 해도 잠에 대한 경각심을 잘 느끼지 못하였기에 잠을 최소한만 자고 하루를 최대한 누려보려고하였다. 하지만 잠이 왜 중요한지를 다시 한번 상기를 해보게 되었고, 최근에는 7~8시간은 자려고 한다. 당연히 이전에 잠을 못잤을 때보다는 더 개운하고 정신적으로 힘든 경향도 덜하게 되었다. 반대로 돈과 관련된 욕구는 버려가고 있다. 이전에는 그냥 먹고 살기 위해서 버텨가면서 돈을 벌었다면 최근에는 돈에 얽매이지 않고 내가 만족할 수 있도록 방향성을 잡아가고 살아가고 있다. 돈이 인간의 기본욕구를 충족시켜줄 것 같지만 꼭 그렇지도 않다. 돈을 벌기 위해 오히려 인간의 기본욕구를 버리게 될 수도 있기 때문이다."
 
             li_level1_text = open_close_tag(
-                "li",
-                types=["class"],
-                values=["width100per-height20per opacity0"],
-                childrens=[
-                    "1단계 : 기본 인권과 관련된 욕구, 먹고 자고 쉬는 행위를 말하며, 이런 기본적인 것들에 대해 제대로 누리게 될 때 욕구를 느낀다. 나는 전에 직장에 있을 때에도 그렇고 3달 전까지만 해도 잠에 대한 경각심을 잘 느끼지 못하였기에 잠을 최소한만 자고 하루를 최대한 누려보려고하였다. 하지만 잠이 왜 중요한지를 다시 한번 상기를 해보게 되었고, 최근에는 7~8시간은 자려고 한다. 당연히 이전에 잠을 못잤을 때보다는 더 개운하고 정신적으로 힘든 경향도 덜하게 되었다. 반대로 돈과 관련된 욕구는 버려가고 있다. 이전에는 그냥 먹고 살기 위해서 버텨가면서 돈을 벌었다면 최근에는 돈에 얽매이지 않고 내가 만족할 수 있도록 방향성을 잡아가고 살아가고 있다. 돈이 인간의 기본욕구를 충족시켜줄 것 같지만 꼭 그렇지도 않다. 돈을 벌기 위해 오히려 인간의 기본욕구를 버리게 될 수도 있기 때문이다."
-                ],
+                TagName.li,
+                types=[TypesValues.className],
+                values=[TypesValues.li_text],
+                childrens=[TagText.li_level_text[4]],
             )
 
             # ul 태그(내용을 보여줌)
@@ -304,9 +301,9 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 타입명 class
             # 타입값 full-size position-absolute flex-vertical-arrange off
             ul_text = open_close_tag(
-                "ul",
-                types=["class"],
-                values=["full-size position-absolute flex-vertical-arrange off"],
+                TagName.ul,
+                types=[TypesValues.className],
+                values=[TypesValues.ul_text],
                 childrens=[
                     li_level5_text,
                     li_level4_text,
@@ -322,9 +319,9 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 타입값 width 1000px height 1000px
             # children = ul_triangle, ul_text
             div_in_ul = open_close_tag(
-                "div",
-                types=["class"],
-                values=["width-1000px height-1000px position-relative"],
+                TagName.div,
+                types=[TypesValues.className],
+                values=[TypesValues.div_in_ul],
                 childrens=[ul_triangle, ul_text],
             )
 
@@ -336,7 +333,9 @@ class MaslowServer(BaseHTTPRequestHandler):
             # <link rel="stylesheet" href="style.css">
 
             css = open_tag(
-                "link", types=["rel", "href"], values=["stylesheet", "style.css"]
+                TagName.link,
+                types=[TypesValues.rel, TypesValues.href],
+                values=[TypesValues.stylesheet, TypesValues.css],
             )
 
             # main.js 가져올 수 있도록
@@ -345,7 +344,7 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 태그명 script
             # 타입명 src
             # 타입값 main.js
-            script = open_close_tag("script",types=["src"],values=["main.js"])
+            script = open_close_tag(TagName.script, types=[TypesValues.src], values=[TypesValues.js])
 
             # basic_tag_complete 함수 사용해보기
             # 제목 매슬로우
@@ -388,11 +387,11 @@ class MaslowServer(BaseHTTPRequestHandler):
             self.send_response(200)
             # header 전달
             # content-type text/javascript; charset = utf-8
-            self.send_header("content-type","text/javascript; charset = utf-8")
+            self.send_header("content-type", "text/javascript; charset = utf-8")
             # header 종료
             self.end_headers()
             # 파일 읽기(main.js 내용에 대한 읽기)
-            with open("main.js","r",encoding="utf-8")as f:
+            with open("main.js", "r", encoding="utf-8") as f:
                 js_content = f.read()
 
             # js_content에 대해 값을 쓰기
@@ -404,7 +403,7 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 에러 발생
             self.send_error(404)
             # 경로를 찾을 수 없다며 print
-            print("경로를 찾을 수 없습니다.",self.path)
+            print("경로를 찾을 수 없습니다.", self.path)
 
 
 # 포트번호 8000
