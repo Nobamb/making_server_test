@@ -18,7 +18,7 @@ class MaslowServer(BaseHTTPRequestHandler):
     def do_GET(self):
         # 만약에 메인 경로일때(""또는 "/")
         if self.path == "" or self.path == "/":
-    
+
             # 응답코드 출력 200
             self.send_response(200)
 
@@ -33,7 +33,12 @@ class MaslowServer(BaseHTTPRequestHandler):
             # h1 태그
             # open_close_tag
             # 내용 : 매슬로우의 욕구이론
-            h1 = open_close_tag("h1", types=["style"],values=["color:red"],childrens=["매슬로우의 욕구 이론"])
+            h1 = open_close_tag(
+                "h1",
+                types=["style"],
+                values=["color:red"],
+                childrens=["매슬로우의 욕구 이론"],
+            )
 
             # h2 태그
             # open_close_tag
@@ -61,6 +66,8 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 내용은 "5단계: 자아실현의 욕구, 무언가에 대해 스스로 실현을 하기 위한 욕구이며, 보통 자신의 꿈, 그리고 목표와 관련되어있다. 나에게 있어서 자아실현의 욕구는 작게는 매슬로우의 욕구를 서버 사이드 렌더링을 통해 나타내는 것부터 시작해서 매슬로우의 욕구를 서버 구조를 예쁘게도 작성해보고, 크게는 나의 서비스를 만들어보면서 수익도 내보는 것이다."
             li_level5 = open_close_tag(
                 "li",
+                types=["class"],
+                values=[".width100per-height20per"],
                 childrens=[
                     "5단계: 자아실현의 욕구, 무언가에 대해 스스로 실현을 하기 위한 욕구이며, 보통 자신의 꿈, 그리고 목표와 관련되어있다. 나에게 있어서 자아실현의 욕구는 작게는 매슬로우의 욕구를 서버 사이드 렌더링을 통해 나타내는 것부터 시작해서 매슬로우의 욕구를 서버 구조를 예쁘게도 작성해보고, 크게는 나의 서비스를 만들어보면서 수익도 내보는 것이다."
                 ],
@@ -68,6 +75,8 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 내용은 "4단계 : 인정의 욕구, 남들에게 인정받기 위한 욕구이며, 내가 스스로 해냈을 때 인정받은 적도 있고(자아실현의 욕구도 같이 실현되는 요인), 남이 하라는 것에 대해서 한 것에 대해서도 인정욕구를 실현(단 자아실현의 욕구까진 도달할 수 없음)할 수 있다. 나에게 있어서 인정 욕구란 남에게 적어도 내가 해왔던 노력이나 재능들에 대해 무시당하지 않는 것부터 시작해서 남조차도 나를 인정하거나 존경하는 것이다. 예를 들어서 이전에 클로저의 개념을 정리하여 설명을 했을 때 관련 분야에서 굵직하게 일을 했던 사람들도 나의 설명을 들으러 온것에 대해 인정욕구를 느끼기도 하였다."
             li_level4 = open_close_tag(
                 "li",
+                types=["class"],
+                values=[".width100per-height20per"],
                 childrens=[
                     "4단계 : 인정의 욕구, 남들에게 인정받기 위한 욕구이며, 내가 스스로 해냈을 때 인정받은 적도 있고(자아실현의 욕구도 같이 실현되는 요인), 남이 하라는 것에 대해서 한 것에 대해서도 인정욕구를 실현(단 자아실현의 욕구까진 도달할 수 없음)할 수 있다. 나에게 있어서 인정 욕구란 남에게 적어도 내가 해왔던 노력이나 재능들에 대해 무시당하지 않는 것부터 시작해서 남조차도 나를 인정하거나 존경하는 것이다. 예를 들어서 이전에 클로저의 개념을 정리하여 설명을 했을 때 관련 분야에서 굵직하게 일을 했던 사람들도 나의 설명을 들으러 온것에 대해 인정욕구를 느끼기도 하였다."
                 ],
@@ -76,6 +85,8 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 내용은 "3단계 : 소속감 또는 애정의 욕구, 어떤 조직 내의 일원으로 인정을 받거나 타인과 교류 관계를 맺는 행위에서 얻는 욕구이다. 나는 주로 나 자신이 개발자라는 생각을 하게 될 때 소속감에 관해서 욕구를 얻었다. 갓 성인이 되었을 때는 생산직이라는 소속에 있었지만 오히려 내 인생의 오점이라고도 생각이 들 정도의 최악의 소속감을 느껴왔고, 이전에 국비학원에서 웹 퍼블리싱에 대해 배울 때에는 당시의 강사님은 나에게 디자이너라는 소속감을 주었다. 물론 영상 편집도 해온 입장에서는 디자이너가 싫지만은 않았지만 개발자라는 목표를 가지고 있던 나에게는 딱히 욕구 실현이 될 정도의 소속감은 들지 않았다. 하지만 현재 개발자라는 소속감에 들게 되었고, 그 덕분에 내가 주말이든 쉬는 날이든 코딩을 하면서 나 자신이 엄연한 개발자라는 자부감을 가지고 있고, 소속감에 대한 욕구를 실현하고 있다."
             li_level3 = open_close_tag(
                 "li",
+                types=["class"],
+                values=[".width100per-height20per"],
                 childrens=[
                     "3단계 : 소속감 또는 애정의 욕구, 어떤 조직 내의 일원으로 인정을 받거나 타인과 교류 관계를 맺는 행위에서 얻는 욕구이다. 나는 주로 나 자신이 개발자라는 생각을 하게 될 때 소속감에 관해서 욕구를 얻었다. 갓 성인이 되었을 때는 생산직이라는 소속에 있었지만 오히려 내 인생의 오점이라고도 생각이 들 정도의 최악의 소속감을 느껴왔고, 이전에 국비학원에서 웹 퍼블리싱에 대해 배울 때에는 당시의 강사님은 나에게 디자이너라는 소속감을 주었다. 물론 영상 편집도 해온 입장에서는 디자이너가 싫지만은 않았지만 개발자라는 목표를 가지고 있던 나에게는 딱히 욕구 실현이 될 정도의 소속감은 들지 않았다. 하지만 현재 개발자라는 소속감에 들게 되었고, 그 덕분에 내가 주말이든 쉬는 날이든 코딩을 하면서 나 자신이 엄연한 개발자라는 자부감을 가지고 있고, 소속감에 대한 욕구를 실현하고 있다."
                 ],
@@ -86,6 +97,8 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 내용은 "2단계 : 안전에 관한 욕구, 앞으로의 일에 대해 두려움을 느끼지 말고 생명에 위협이 되는 일이 없어졌을 때에 해당 욕구를 느낀다. 나는 주로 가끔 전직장에서 근무할 때 2~3주간 제대로 쉬지도 못하고 일을 한 경험이 있었다. 게다가 상사들이 나에게 스트레스도 주면서 일은 가끔 위험한 것도 하거나 잠도 잘 못자는 경우도 생기는 등 정신적으로나 육체적으로까지도 앞으로 나아질까하는 걱정과 두려움에 시달리면서 생명에 대한 위협을 많이 생각하기도 하였다. 그때와 비교하면 지금의 나는 이미 그 회사를 나갔기에 위협적인 상황은 발생하지 않고 안전하다 느낀다."
             li_level2 = open_close_tag(
                 "li",
+                types=["class"],
+                values=[".width100per-height20per"],
                 childrens=[
                     "2단계 : 안전에 관한 욕구, 앞으로의 일에 대해 두려움을 느끼지 말고 생명에 위협이 되는 일이 없어졌을 때에 해당 욕구를 느낀다. 나는 주로 가끔 전직장에서 근무할 때 2~3주간 제대로 쉬지도 못하고 일을 한 경험이 있었다. 게다가 상사들이 나에게 스트레스도 주면서 일은 가끔 위험한 것도 하거나 잠도 잘 못자는 경우도 생기는 등 정신적으로나 육체적으로까지도 앞으로 나아질까하는 걱정과 두려움에 시달리면서 생명에 대한 위협을 많이 생각하기도 하였다. 그때와 비교하면 지금의 나는 이미 그 회사를 나갔기에 위협적인 상황은 발생하지 않고 안전하다 느낀다."
                 ],
@@ -94,6 +107,8 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 내용은 "1단계 : 기본 인권과 관련된 욕구, 먹고 자고 쉬는 행위를 말하며, 이런 기본적인 것들에 대해 제대로 누리게 될 때 욕구를 느낀다. 나는 전에 직장에 있을 때에도 그렇고 3달 전까지만 해도 잠에 대한 경각심을 잘 느끼지 못하였기에 잠을 최소한만 자고 하루를 최대한 누려보려고하였다. 하지만 잠이 왜 중요한지를 다시 한번 상기를 해보게 되었고, 최근에는 7~8시간은 자려고 한다. 당연히 이전에 잠을 못잤을 때보다는 더 개운하고 정신적으로 힘든 경향도 덜하게 되었다. 반대로 돈과 관련된 욕구는 버려가고 있다. 이전에는 그냥 먹고 살기 위해서 버텨가면서 돈을 벌었다면 최근에는 돈에 얽매이지 않고 내가 만족할 수 있도록 방향성을 잡아가고 살아가고 있다. 돈이 인간의 기본욕구를 충족시켜줄 것 같지만 꼭 그렇지도 않다. 돈을 벌기 위해 오히려 인간의 기본욕구를 버리게 될 수도 있기 때문이다."
             li_level1 = open_close_tag(
                 "li",
+                types=["class"],
+                values=[".width100per-height20per"],
                 childrens=[
                     "1단계 : 기본 인권과 관련된 욕구, 먹고 자고 쉬는 행위를 말하며, 이런 기본적인 것들에 대해 제대로 누리게 될 때 욕구를 느낀다. 나는 전에 직장에 있을 때에도 그렇고 3달 전까지만 해도 잠에 대한 경각심을 잘 느끼지 못하였기에 잠을 최소한만 자고 하루를 최대한 누려보려고하였다. 하지만 잠이 왜 중요한지를 다시 한번 상기를 해보게 되었고, 최근에는 7~8시간은 자려고 한다. 당연히 이전에 잠을 못잤을 때보다는 더 개운하고 정신적으로 힘든 경향도 덜하게 되었다. 반대로 돈과 관련된 욕구는 버려가고 있다. 이전에는 그냥 먹고 살기 위해서 버텨가면서 돈을 벌었다면 최근에는 돈에 얽매이지 않고 내가 만족할 수 있도록 방향성을 잡아가고 살아가고 있다. 돈이 인간의 기본욕구를 충족시켜줄 것 같지만 꼭 그렇지도 않다. 돈을 벌기 위해 오히려 인간의 기본욕구를 버리게 될 수도 있기 때문이다."
                 ],
@@ -103,10 +118,14 @@ class MaslowServer(BaseHTTPRequestHandler):
             # open_close_tag
             # childrens로 li들을 받음
             # 타입 class
-            # 타입값 gray-bbb, triangle
+            # 타입값 gray-bbb, triangle width-1000px height-1000px .flex-vertical-arrange
 
-            ul = open_close_tag("ul", types=["class"],values=["triangle gray-bbb width-1000px height-1000px"],childrens=[li_level5, li_level4, li_level3, li_level2, li_level1])
-
+            ul = open_close_tag(
+                "ul",
+                types=["class"],
+                values=["triangle gray-bbb width-1000px height-1000px flex-vertical-arrange"],
+                childrens=[li_level5, li_level4, li_level3, li_level2, li_level1],
+            )
 
             # css 링크
             # open_tag
@@ -115,12 +134,17 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 속성값 stylesheet style.css
             # <link rel="stylesheet" href="style.css">
 
-
-            css = open_tag("link",types=["rel","href"],values=["stylesheet", "style.css"])
+            css = open_tag(
+                "link", types=["rel", "href"], values=["stylesheet", "style.css"]
+            )
 
             # basic_tag_complete 함수 사용해보기
             # 제목 매슬로우
-            result = basic_tag_complete(title_name="매슬로우", add_body_tags=[h1,h2, p, ul], add_head_tags=[css])
+            result = basic_tag_complete(
+                title_name="매슬로우",
+                add_body_tags=[h1, h2, p, ul],
+                add_head_tags=[css],
+            )
 
             # 서버에 출력
             # encode utf-8
@@ -128,12 +152,12 @@ class MaslowServer(BaseHTTPRequestHandler):
 
             # 연결 테스트
             print("서버 접속 성공")
-            
+
         # 만약에 경로가 /style.css일 때
         # 브라우저에서 style.css를 인식하였을 때
         elif self.path == "/style.css":
             # style.css 읽어오기
-            with open("style.css", "r",encoding="utf-8") as f:
+            with open("style.css", "r", encoding="utf-8") as f:
                 # 읽어온 값을 저장
                 style_css = f.read()
 
@@ -141,13 +165,12 @@ class MaslowServer(BaseHTTPRequestHandler):
             self.send_response(200)
             # header 전달
             # content-type text/css(css 내용을 가져와야하기에); charset = utf-8
-            self.send_header("content-type","text/css; charset = utf-8")
+            self.send_header("content-type", "text/css; charset = utf-8")
             # header 종료
             self.end_headers()
             # 읽어온 css 값 전달
             # encode utf-8 적용
             self.wfile.write(style_css.encode("utf-8"))
-
 
         # 그 외의 경로라면
         else:
@@ -155,7 +178,6 @@ class MaslowServer(BaseHTTPRequestHandler):
             self.send_error(404)
             # 경로를 찾을 수 없다며 print
             print("경로를 찾을 수 없습니다.")
-
 
 
 # 포트번호 8000
