@@ -39,7 +39,6 @@ ul{
 .height-1000px{
 
     height:1000px;
-
 }
 
 
@@ -49,3 +48,27 @@ ul{
     clip-path: polygon(50% 0%,0% 100%, 100% 100%);
 
 }
+
+
+/* flex 기반으로 세로로 정렬 */
+/* 수직 방향 */
+
+.flex-vertical-arrange{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+
+/* 가로 100% 세로 20% */
+/* li에 사용 */
+
+.width100per-height20per{
+
+    width: 100%;
+    height:20%;
+
+}
+
