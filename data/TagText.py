@@ -1,15 +1,27 @@
+# 부모 경로 지정하기 위한 os, sys import
+import os
+import sys
+
+# 현재 파일 경로를 절대경로로 지정
+abs_path = os.path.abspath(__file__)
+# 부모경로를 지정
+parent_path = os.path.dirname(abs_path)
+# 부모경로를 시스템 상에 추가
+sys.path.append(parent_path)
+
+
 # open_tag 가져옴
 # br 적용하기 위해
-from ..tag.open_tag import open_tag
+from tag.open_tag import open_tag
 
-# br 태그
-# 웹페이지에 보여지는 내용들이 있기 때문
-# open_tag
-br = open_tag("br")
 
 
 # 태그에 들어갈 텍스트들을 모아놓음
 class TagText:
+    # br 태그
+    # 웹페이지에 보여지는 내용들이 있기 때문
+    # open_tag
+    br = open_tag("br")
     # h1에 들어갈 내용
     h1 = "매슬로우의 욕구 이론"
     # h2에 들어갈 내용
