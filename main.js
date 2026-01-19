@@ -33,6 +33,9 @@ let triangleLi = undefined;
 // 유사배열인 ulTriangle의 요소들 배열화
 const ulTriangleArr = Array.from(ulTriangle.children);
 
+//   ulText 배열화
+const ulTextArr = Array.from(ulText);
+
 // ulTriangle에 마우스를 올렸을 때
 ulTriangle.addEventListener("mouseover", (e) => {
   // 올려놓은 li(ul_triangle)의 요소를 저장
@@ -68,9 +71,6 @@ divInUl.addEventListener("mouseleave", () => {
 
   // ulTriangle에 있는 리스트
   triangleLi = undefined;
-
-  //   ulText 배열화
-  const ulTextArr = Array.from(ulText);
 
   //   모두 opacity100=>0
   ulTextArr.forEach((element) => {
