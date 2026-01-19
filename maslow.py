@@ -40,8 +40,6 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 내용 : 매슬로우의 욕구이론
             h1 = open_close_tag(
                 "h1",
-                types=["style"],
-                values=["color:red"],
                 childrens=["매슬로우의 욕구 이론"],
             )
 
