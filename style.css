@@ -172,3 +172,50 @@ h3{
     background-color: blue;
 
 }
+
+
+
+
+/* 이벤트 관련 ==================================================================== */
+
+/* transition 0.3s 관련 */
+
+.transition-0-3s{
+
+    transition: 0.3s;
+
+}
+
+
+/* opacity 관련 */
+
+/* 100% */
+
+.opacity100{
+
+    opacity: 100%;
+
+}
+
+/* 0% */
+
+.opacity0{
+
+    opacity: 0%;
+
+}
+
+
+/* on(display block) */
+.on{
+
+    display: block;
+
+}
+
+/* off(display none) */
+.on{
+
+    display: none;
+
+}
