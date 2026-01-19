@@ -12,8 +12,15 @@ console.log("서버와 자바스크립트와 연결 성공")
 // body를 먼저 가져옴
 const body = document.body
 
-// body에 마우스를 올렸을 때
-body.addEventListener("mouseenter",()=> {
+// body에서 div를 찾음
+// div_in_ul(ul들이 존재하는 div)
+const div_in_ul = body.children[3]
+
+
+
+
+// div_in_ul에 마우스를 올렸을 때
+div_in_ul.addEventListener("mouseenter",()=> {
     // 알람이 뜨도록 함
     alert("body 동작 테스트 성공")
 
