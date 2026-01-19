@@ -48,17 +48,20 @@ ulTriangle.addEventListener("mouseover", (e) => {
 
 
   
-
-
   // ul_text의 class를 off=> on으로 변경
   ulText.classList.remove("off");
   ulText.classList.add("on");
-
+  
   // (콜백, ul_text의 li)
   // 그 index의 값에 맞추어 ul_text의
   // index에 해당하는 li의 class를
   // opacity0 => opacity100으로 변경
-});
+  // 가져온 인덱스를 토대로 opacity0=>100 진행
+  
+  ulText.children[triangleIndex].classList.remove("opacity0")
+  ulText.children[triangleIndex].classList.add("opacity100")
+
+});  
 
 // div_in_ul에 마우스를 뗏을 때
 divInUl.addEventListener("mouseleave", () => {
