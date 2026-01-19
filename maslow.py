@@ -149,6 +149,13 @@ class MaslowServer(BaseHTTPRequestHandler):
             self.wfile.write(style_css.encode("utf-8"))
 
 
+        # 그 외의 경로라면
+        else:
+            # 에러 발생
+            self.send_error(404)
+            # 경로를 찾을 수 없다며 print
+            print("경로를 찾을 수 없습니다.")
+
 
 
 # 포트번호 8000
