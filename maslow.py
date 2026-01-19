@@ -97,7 +97,7 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 태그명은 h3
             # 타입명 class
             # 타입값 text-align-center
-            li_level4_title = open_close_tag("h3", types=["class"],values=["text-align-center"],childrens=["4단계, 인정의 욕구"])
+            li_level4_title = open_close_tag("h3", types=["class"],values=["text-align-center"],childrens=[f"4단계,{br}인정의 욕구"])
 
             # li 태그
             # open_close_tag
@@ -121,7 +121,7 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 타입명 class
             # 타입값 text-align-center
             li_level3_title = open_close_tag(
-                "h3", types=["class"],values=["text-align-center"],childrens=["3단계, 소속감 또는 애정의 욕구"]
+                "h3", types=["class"],values=["text-align-center"],childrens=[f"3단계,{br}소속감 또는 애정의 욕구"]
             )
 
 
@@ -146,7 +146,7 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 타입명 class
             # 타입값 text-align-center
             li_level2_title = open_close_tag(
-                "h3", types=["class"],values=["text-align-center"],childrens=["2단계, 안전과 관련된 욕구"]
+                "h3", types=["class"],values=["text-align-center"],childrens=[f"2단계,{br}안전과 관련된 욕구"]
             )
 
 
@@ -171,7 +171,7 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 타입명 class
             # 타입값 text-align-center
             li_level1_title = open_close_tag(
-                "h3", types=["class"],values=["text-align-center"],childrens=["1단계, 기본 인권과 관련된 욕구"]
+                "h3", types=["class"],values=["text-align-center"],childrens=[f"1단계,{br}기본 인권과 관련된 욕구"]
             )
 
 
@@ -341,11 +341,19 @@ class MaslowServer(BaseHTTPRequestHandler):
                 "link", types=["rel", "href"], values=["stylesheet", "style.css"]
             )
 
+            # main.js 가져올 수 있도록
+            # script 태그 지정
+            # open_close_tag
+            # 태그명 script
+            # 타입명 src
+            # 타입값 main.js
+            script = open_close_tag("script",types=["src"],values=["main.js"])
+
             # basic_tag_complete 함수 사용해보기
             # 제목 매슬로우
             result = basic_tag_complete(
                 title_name="매슬로우",
-                add_body_tags=[h1, h2, p, div_in_ul],
+                add_body_tags=[h1, h2, p, div_in_ul, script],
                 add_head_tags=[css],
             )
 
@@ -375,12 +383,30 @@ class MaslowServer(BaseHTTPRequestHandler):
             # encode utf-8 적용
             self.wfile.write(style_css.encode("utf-8"))
 
+        # 만약에 경로가 /main.js일 때
+        # 브라우저에서 main.js를 인식하였을 때
+        elif self.path == "/main.js":
+            # 200코드 전달
+            self.send_response(200)
+            # header 전달
+            # content-type text/javascript; charset = utf-8
+            self.send_header("content-type","text/javascript; charset = utf-8")
+            # header 종료
+            self.end_headers()
+            # 파일 읽기(main.js 내용에 대한 읽기)
+            with open("main.js","r",encoding="utf-8")as f:
+                js_content = f.read()
+
+            # js_content에 대해 값을 쓰기
+            # encode utf-8
+            self.wfile.write(js_content.encode("utf-8"))
+
         # 그 외의 경로라면
         else:
             # 에러 발생
             self.send_error(404)
             # 경로를 찾을 수 없다며 print
-            print("경로를 찾을 수 없습니다.")
+            print("경로를 찾을 수 없습니다.",self.path)
 
 
 # 포트번호 8000
