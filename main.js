@@ -39,8 +39,30 @@ divInUl.addEventListener("mouseenter",(e)=> {
     
 
 
-    // 올려놓은 li(ul_triangle)의 index를 저장하고
-    triangleIndex = e.target.closest("ulTriangle")
+    // 올려놓은 li(ul_triangle)의 요소를 저장
+    const triangleLi = e.target.querySelector("ul:nth-child(1)>li")
+
+
+    
+    // 인덱스 값 찾음
+    // foreach
+    triangleIndex = ulTriangle.map((element,index) => {
+        
+        // 만약에 element와 triangleLi가 같다면
+        if (element === triangleLi){
+            // 인덱스 반환
+            return index
+
+        }
+
+
+    });
+
+
+
+    // triangleIndex 테스트
+    console.log(triangleIndex)
+
 
     // ul_text의 class를 off=> on으로 변경
     ulText.classList.remove("off")
