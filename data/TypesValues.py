@@ -39,8 +39,8 @@ class TypesValues:
     # 매슬로우의 욕구 이론 피라미드 속성값
     ul_triangle = "triangle back-color-gray-bbb full-size flex-vertical-arrange position-absolute"
     
-    # 매슬로우의 욕구 이론에 대한 설명들 li 속성값
-    li_text = "width100per-height20per opacity0"
+    # 매슬로우의 욕구 이론에 대한 설명들 li 속성값 
+    li_text = "width100per-height20per opacity0 border-radius back-color-gray-bbb pad-10"
     
     
     # 매슬로우의 욕구 이론에 대한 설명들 ul 속성값
