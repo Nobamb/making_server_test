@@ -10,8 +10,12 @@ console.log("서버와 자바스크립트와 연결 성공")
 
 
 // body를 먼저 가져옴
-const body = document.getElementById("body")
+const body = document.body
 
+// body에 마우스를 올렸을 때
+body.addEventListener("mouseenter",()=> {
+    // 알람이 뜨도록 함
+    alert("body 동작 테스트 성공")
 
-// 출력 테스트
-console.log(body)
+})
+
