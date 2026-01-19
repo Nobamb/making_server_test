@@ -113,7 +113,7 @@ class MaslowServer(BaseHTTPRequestHandler):
         # <link rel="stylesheet" href="style.css">
 
 
-        css = open_tag("link",types=["link","href"],values=["stylesheet", "style.css"])
+        css = open_tag("link",types=["rel","href"],values=["stylesheet", "style.css"])
 
         # basic_tag_complete 함수 사용해보기
         # 제목 매슬로우
