@@ -46,7 +46,18 @@ ulTriangle.addEventListener("mouseover", (e) => {
   if (triangleLi && ulTriangle.contains(triangleLi)) {
     // ulTriangleArr에서 triangleLi의 인덱스 찾기
     // 찾은 인덱스를 triangleIndex에 추가
-    triangleIndex = ulTriangleArr.indexOf(triangleLi);
+    // triangleIndex = ulTriangleArr.indexOf(triangleLi);
+    
+    // ulTriangleArr 순회
+    ulTriangleArr.forEach((element, index)=> {
+      // ulTriangleArr의 요소와 호버한 요소가 같다면
+      if(element === triangleLi){
+        // 인덱스를 대입
+        triangleIndex = index
+      }
+
+    })
+
   }
 
   // ul_text의 class를 off=> on으로 변경
