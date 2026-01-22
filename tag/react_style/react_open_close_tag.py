@@ -27,9 +27,13 @@ def react_open_close_tag(tag_name, *children, **props):
     # props를 items()의 형태로 변환하여
     # key와 value를 가져옴
     for key, value in props.items():
+        # 만약에 key가 className일 때
+        if key == "className":
+            # class로 변경
+            key = "class"
         # key,value를 한번에 문자열(f-string)로 묶은
         # key_value 지정
-        key_value = f" {key}={value}"
+        key_value = f' {key}="{value}"'
         # props_arr에 추가
         props_arr.append(key_value)
     
