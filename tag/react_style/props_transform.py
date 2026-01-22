@@ -31,7 +31,7 @@ def props_transform(props):
         # 빈문자가 아니라면
         else:
             # key, value 전달
-            key_value = f" {key}={value}"
+            key_value = f' {key}="{value}"'
             # props_arr에 추가
             props_arr.append(key_value)
             
