@@ -20,9 +20,14 @@ def react_open_tag(tag_name, **props):
         # class로 변경
         if key == "className":
             key = "class"
-        # props_arr에 추가할 문자열 지정
-        # key = value의 형태
-        key_value = f' {key}="{value}"'
+        # 만약에 value의 값이 없으면
+        if value == "":
+            key_value = f" {key}"
+        # value의 값이 존재한다면
+        else:            
+            # props_arr에 추가할 문자열 지정
+            # key = value의 형태
+            key_value = f' {key}="{value}"'
         # props_arr에 추가
         props_arr.append(key_value)
     # 추가가 완료되면 join으로 묶기
@@ -33,3 +38,8 @@ def react_open_tag(tag_name, **props):
     result = f"<{tag_name}{props_value}>"
     # result 반환
     return result
+
+
+# 테스트3
+doctype = react_open_tag("!DOCTYPE",html="")
+print(doctype)
