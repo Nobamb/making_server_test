@@ -34,7 +34,7 @@ let triangleLi = undefined;
 const ulTriangleArr = Array.from(ulTriangle.children);
 
 //   ulText 배열화
-const ulTextArr = Array.from(ulText);
+const ulTextArr = Array.from(ulText.children);
 
 // ulTriangle에 마우스를 올렸을 때
 ulTriangle.addEventListener("mouseover", (e) => {
@@ -73,10 +73,12 @@ divInUl.addEventListener("mouseleave", () => {
   triangleLi = undefined;
 
   //   모두 opacity100=>0
-  ulTextArr.forEach((element) => {
-    element.classList.remove("opacity100");
-    element.classList.add("opacity0");
-  });
+  ulTextArr.forEach((element)=>{
+
+    element.classList.remove("opacity100")
+    element.classList.add("opacity0")
+
+  })
 
   // ul_text의 class를 on=> off로 변경
   ulText.classList.remove("on");
