@@ -8,4 +8,5 @@
 # props의 데이터들을 묶어서 딕셔너리 형식으로 만들기
 # => **kwargs의 형태로 만들기(**props)
 # props를 items()로 분해하여 key, value로 나누기
-# children은 join을 
+# children은 join을 통해 묶기
+# f-string을 통해 문자열들 한번에 정리한 후 반환
