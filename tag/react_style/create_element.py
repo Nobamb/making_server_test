@@ -20,8 +20,7 @@ def create_element(tag_name, *children,**props):
         
     # children을 분해
     # ""을 기반으로
-    children_value = "".join(children)
-    
+    children_value = "".join(children) 
     
     # tag_name, tag_props, children_value를 통해
     # 하나의 태그 만들기
@@ -29,3 +28,11 @@ def create_element(tag_name, *children,**props):
     
     # result 반환
     return result
+
+
+
+
+# 테스트
+hello = create_element("div",["안녕"],{"class":"hello"})
+
+print(hello)
