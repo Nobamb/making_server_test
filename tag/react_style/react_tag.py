@@ -19,14 +19,13 @@ def react_tag(tag_name, *children, **props):
     # items메소드를 통해 value까지 나타내기
     for key, value in props.items():
         # key, value를 문자열로 묶어서 표현
-        key_value = f"{key}={value}"
+        key_value = f" {key}={value}"
         # key_value를 props_arr에 담음
         # append 방식으로 담아보기
         props_arr.append(key_value)
     
     # props_arr 다 담았다면 join을 통해 묶음
-    # 앞에 띄어쓰기를 기준으로 문자열 넣기
-    props_value = " ".join(props_arr)
+    props_value = "".join(props_arr)
     # children도 다 담았다면 join을 통해 묶음
     # 기본 값들끼리 묶기
     children_value = "".join(children)
