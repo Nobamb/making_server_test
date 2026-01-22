@@ -11,7 +11,7 @@
 # children은 join을 통해 묶기
 # f-string을 통해 문자열들 한번에 정리한 후 반환
 
-def react_tag(tag_name, *children, **props):
+def react_tag(tag_name,**props):
     # props 키와 키값을 받을 배열 초기화
     props_arr = []
     
@@ -32,13 +32,10 @@ def react_tag(tag_name, *children, **props):
     
     # props_arr 다 담았다면 join을 통해 묶음
     props_value = "".join(props_arr)
-    # children도 다 담았다면 join을 통해 묶음
-    # 기본 값들끼리 묶기
-    children_value = "".join(children)
     
     # 한번에 묶기(f-string)
     # result
-    result = f"<{tag_name}{props_value}>{children_value}</{tag_name}>"
+    result = f"<{tag_name}{props_value}/>"
     
     # result 반환
     return result
@@ -46,5 +43,5 @@ def react_tag(tag_name, *children, **props):
 
 
 # 테스트
-hello = react_tag("div","안녕하세요",className ="hello")
+hello = react_tag("div",className ="hello")
 print(hello)
