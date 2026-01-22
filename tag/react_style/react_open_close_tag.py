@@ -1,3 +1,6 @@
+# props_transform 가져옴
+from props_transform import props_transform
+
 # 리액트 스타일대로 커스텀 태그를 만들어보기
 # (열고 닫으면서 children 추가)
 # 태그명, children, props를 받음
@@ -20,33 +23,39 @@
 
 def react_open_close_tag(tag_name, *children, **props):
     
-    # props를 받을 배열(props_arr) 초기화
-    props_arr = []
+    # props_transform 가져옴
+    # props를 받음
+
+    props_value = props_transform(props)
     
-    # props의 key, value를 나눔
-    # props를 items()의 형태로 변환하여
-    # key와 value를 가져옴
-    for key, value in props.items():
-        # 만약에 key가 className일 때
-        if key == "className":
-            # class로 변경
-            key = "class"
+    
+    # # props를 받을 배열(props_arr) 초기화
+    # props_arr = []
+    
+    # # props의 key, value를 나눔
+    # # props를 items()의 형태로 변환하여
+    # # key와 value를 가져옴
+    # for key, value in props.items():
+    #     # 만약에 key가 className일 때
+    #     if key == "className":
+    #         # class로 변경
+    #         key = "class"
             
-        # 만약에 value가 빈문자열이면
-        # key만 전달하기
-        if value == "":
-            key_value = f" {key}"
-        # 아니라면
-        else:    
-            # key,value를 한번에 문자열(f-string)로 묶은
-            # key_value 지정
-            key_value = f' {key}="{value}"'
-        # props_arr에 추가
-        props_arr.append(key_value)
+    #     # 만약에 value가 빈문자열이면
+    #     # key만 전달하기
+    #     if value == "":
+    #         key_value = f" {key}"
+    #     # 아니라면
+    #     else:    
+    #         # key,value를 한번에 문자열(f-string)로 묶은
+    #         # key_value 지정
+    #         key_value = f' {key}="{value}"'
+    #     # props_arr에 추가
+    #     props_arr.append(key_value)
     
     
-    # props_arr를 따로 join 메서드를 통해 한 문자열로 묶기
-    props_value = "".join(props_arr)
+    # # props_arr를 따로 join 메서드를 통해 한 문자열로 묶기
+    # props_value = "".join(props_arr)
     
     # children을 따로 join메서드를 통해 한 문자열로 묶기
     # \n을 통해 문자열을 들여쓰기로 나눔
@@ -58,3 +67,7 @@ def react_open_close_tag(tag_name, *children, **props):
     # result 반환
     return result
 
+
+# 테스트
+div = react_open_close_tag("div","안녕",className = "hello")
+print(div)
