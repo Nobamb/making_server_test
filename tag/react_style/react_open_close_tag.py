@@ -31,9 +31,16 @@ def react_open_close_tag(tag_name, *children, **props):
         if key == "className":
             # class로 변경
             key = "class"
-        # key,value를 한번에 문자열(f-string)로 묶은
-        # key_value 지정
-        key_value = f' {key}="{value}"'
+            
+        # 만약에 value가 빈문자열이면
+        # key만 전달하기
+        if value == "":
+            key_value = f" {key}"
+        # 아니라면
+        else:    
+            # key,value를 한번에 문자열(f-string)로 묶은
+            # key_value 지정
+            key_value = f' {key}="{value}"'
         # props_arr에 추가
         props_arr.append(key_value)
     
@@ -46,7 +53,13 @@ def react_open_close_tag(tag_name, *children, **props):
     children_value = "\n".join(children)
     
     # children_value를 open_tag와 합쳐서 문자열의 형태로 만들기
-    result = f"<{tag_name}{props_value}>{children_value}</{tag_name}>"
+    result = f"<{tag_name}{props_value}>\n{children_value}\n</{tag_name}>"
     
     # result 반환
     return result
+
+
+
+# 실행
+div = react_open_close_tag("div","안녕",className="")
+print(div)
