@@ -16,8 +16,6 @@ from tag.react_style.react_open_tag import react_open_tag
 from tag.react_style.react_open_close_tag import react_open_close_tag
 
 
-
-
 # basehttp 클래스 오버라이드
 # maslow_server
 class MaslowServer(BaseHTTPRequestHandler):
@@ -29,15 +27,74 @@ class MaslowServer(BaseHTTPRequestHandler):
         # 전송할 header 지정
         # content-type
         # text/html
-        self.send_header("content-type","text/html; charset=utf-8")
+        self.send_header("content-type", "text/html; charset=utf-8")
         # header 전송 완료
         self.end_headers()
-        
+
         # 전송 완료 테스트
         # 내가 직접 작성한 react_style의 태그 함수들 가져오기
-        
-        
 
+        # p
+        # react_open_close_tag
+        # 내용 : POST 요청에 성공했습니다.
+        p = react_open_close_tag("p","POST 요청에 성공했습니다.")
+
+
+
+        # h1
+        # react_open_close_tag
+        # 내용 : 전송 성공
+        h1 = react_open_close_tag("h1","전송 성공")
+
+
+
+        # body
+        # h1 받음
+        # p 받음
+        # react_open_close_tag
+        body = react_open_close_tag("body", h1, p)
+
+
+
+        # meta name viewport content width=device-width, initial-scale=1.0
+        # react_open_tag
+        meta_name_viewport = react_open_tag(
+            "meta", name="content", viewport="width=device-width, initial-scale=1.0"
+        )
+
+        # meta charset UTF-8
+        # react_open_tag
+        meta_charset = react_open_tag("meta", charset="UTF-8")
+
+        # title 문서
+        # react_open_close_tag
+        title = react_open_close_tag("title","문서")
+
+        # head
+        # meta charset UTF-8
+        # meta name viewport content width=device-width, initial-scale=1.0
+        # title 문서
+        # react_open_close_tag
+        head = react_open_close_tag(
+            "head",meta_charset, meta_name_viewport,title
+        )
+
+        # html
+        # head, body를 받음
+        # lang타입 ko
+        # react_open_close_tag
+        html = react_open_close_tag("html", head, body, lang="ko")
+
+        # DOCTYPE
+        # html 타입(값 x)
+        # react_open_tag
+        doctype = react_open_tag("!DOCTYPE", html="")
+
+        # result
+        # doctype + html
+        result = doctype + html
+        # result 작성(encode(utf-8))
+        self.wfile.write(result.encode("utf-8"))
 
     # get메소드 받음
     def do_GET(self):
@@ -58,7 +115,6 @@ class MaslowServer(BaseHTTPRequestHandler):
             # br 태그
             # open_tag
             br = open_tag("br")
-
 
             # h1 태그
             # open_close_tag
@@ -98,7 +154,12 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 타입명 class
             # 타입값 text-align-center
             # 가장 작은 글자 크기이므로 들여쓰기용 br 추가
-            li_level5_title = open_close_tag("h3", types=["class"],values=["text-align-center"],childrens=[f"5단계,{br}자아실현의{br}욕구"])
+            li_level5_title = open_close_tag(
+                "h3",
+                types=["class"],
+                values=["text-align-center"],
+                childrens=[f"5단계,{br}자아실현의{br}욕구"],
+            )
 
             # li 태그
             # open_close_tag
@@ -122,20 +183,26 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 태그명은 h3
             # 타입명 class
             # 타입값 text-align-center
-            li_level4_title = open_close_tag("h3", types=["class"],values=["text-align-center"],childrens=[f"4단계,{br}인정의 욕구"])
+            li_level4_title = open_close_tag(
+                "h3",
+                types=["class"],
+                values=["text-align-center"],
+                childrens=[f"4단계,{br}인정의 욕구"],
+            )
 
             # li 태그
             # open_close_tag
             # 타입명 class
             # 속성값 width100per-height20per back-color-blue vertical-horizental-center
-            
-            
+
             # 내용은 "4단계 : 인정의 욕구, 남들에게 인정받기 위한 욕구이며, 내가 스스로 해냈을 때 인정받은 적도 있고(자아실현의 욕구도 같이 실현되는 요인), 남이 하라는 것에 대해서 한 것에 대해서도 인정욕구를 실현(단 자아실현의 욕구까진 도달할 수 없음)할 수 있다. 나에게 있어서 인정 욕구란 남에게 적어도 내가 해왔던 노력이나 재능들에 대해 무시당하지 않는 것부터 시작해서 남조차도 나를 인정하거나 존경하는 것이다. 예를 들어서 이전에 클로저의 개념을 정리하여 설명을 했을 때 관련 분야에서 굵직하게 일을 했던 사람들도 나의 설명을 들으러 온것에 대해 인정욕구를 느끼기도 하였다."
             li_level4 = open_close_tag(
                 "li",
                 # 클래스 속성 가로100% 및 세로 20%, 배경 초록
                 types=["class"],
-                values=["width100per-height20per back-color-green vertical-horizental-center"],
+                values=[
+                    "width100per-height20per back-color-green vertical-horizental-center"
+                ],
                 childrens=[li_level4_title],
             )
 
@@ -146,9 +213,11 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 타입명 class
             # 타입값 text-align-center
             li_level3_title = open_close_tag(
-                "h3", types=["class"],values=["text-align-center"],childrens=[f"3단계,{br}소속감 또는 애정의 욕구"]
+                "h3",
+                types=["class"],
+                values=["text-align-center"],
+                childrens=[f"3단계,{br}소속감 또는 애정의 욕구"],
             )
-
 
             # li 태그
             # open_close_tag
@@ -160,7 +229,9 @@ class MaslowServer(BaseHTTPRequestHandler):
                 "li",
                 # 클래스 속성 가로100% 및 세로 20%, 배경 노랑
                 types=["class"],
-                values=["width100per-height20per back-color-yellow vertical-horizental-center"],
+                values=[
+                    "width100per-height20per back-color-yellow vertical-horizental-center"
+                ],
                 childrens=[li_level3_title],
             )
 
@@ -171,9 +242,11 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 타입명 class
             # 타입값 text-align-center
             li_level2_title = open_close_tag(
-                "h3", types=["class"],values=["text-align-center"],childrens=[f"2단계,{br}안전과 관련된 욕구"]
+                "h3",
+                types=["class"],
+                values=["text-align-center"],
+                childrens=[f"2단계,{br}안전과 관련된 욕구"],
             )
-
 
             # li 태그
             # open_close_tag
@@ -185,7 +258,9 @@ class MaslowServer(BaseHTTPRequestHandler):
                 "li",
                 # 클래스 속성 가로100% 및 세로 20%, 배경 주황
                 types=["class"],
-                values=["width100per-height20per back-color-orange vertical-horizental-center"],
+                values=[
+                    "width100per-height20per back-color-orange vertical-horizental-center"
+                ],
                 childrens=[li_level2_title],
             )
 
@@ -196,22 +271,25 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 타입명 class
             # 타입값 text-align-center
             li_level1_title = open_close_tag(
-                "h3", types=["class"],values=["text-align-center"],childrens=[f"1단계,{br}기본 인권과 관련된 욕구"]
+                "h3",
+                types=["class"],
+                values=["text-align-center"],
+                childrens=[f"1단계,{br}기본 인권과 관련된 욕구"],
             )
-
 
             # li 태그
             # open_close_tag
             # 타입명 class
             # 속성값 width100per-height20per back-color-blue vertical-horizental-center
-        
 
             # 내용은 li_level1_title,"1단계 : 기본 인권과 관련된 욕구, 먹고 자고 쉬는 행위를 말하며, 이런 기본적인 것들에 대해 제대로 누리게 될 때 욕구를 느낀다. 나는 전에 직장에 있을 때에도 그렇고 3달 전까지만 해도 잠에 대한 경각심을 잘 느끼지 못하였기에 잠을 최소한만 자고 하루를 최대한 누려보려고하였다. 하지만 잠이 왜 중요한지를 다시 한번 상기를 해보게 되었고, 최근에는 7~8시간은 자려고 한다. 당연히 이전에 잠을 못잤을 때보다는 더 개운하고 정신적으로 힘든 경향도 덜하게 되었다. 반대로 돈과 관련된 욕구는 버려가고 있다. 이전에는 그냥 먹고 살기 위해서 버텨가면서 돈을 벌었다면 최근에는 돈에 얽매이지 않고 내가 만족할 수 있도록 방향성을 잡아가고 살아가고 있다. 돈이 인간의 기본욕구를 충족시켜줄 것 같지만 꼭 그렇지도 않다. 돈을 벌기 위해 오히려 인간의 기본욕구를 버리게 될 수도 있기 때문이다."
             li_level1 = open_close_tag(
                 "li",
                 # 클래스 속성 가로100% 및 세로 20%, 배경 빨강
                 types=["class"],
-                values=["width100per-height20per back-color-red vertical-horizental-center"],
+                values=[
+                    "width100per-height20per back-color-red vertical-horizental-center"
+                ],
                 childrens=[li_level1_title],
             )
 
@@ -372,7 +450,7 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 태그명 script
             # 타입명 src
             # 타입값 main.js
-            script = open_close_tag("script",types=["src"],values=["main.js"])
+            script = open_close_tag("script", types=["src"], values=["main.js"])
 
             # basic_tag_complete 함수 사용해보기
             # 제목 매슬로우
@@ -415,11 +493,11 @@ class MaslowServer(BaseHTTPRequestHandler):
             self.send_response(200)
             # header 전달
             # content-type text/javascript; charset = utf-8
-            self.send_header("content-type","text/javascript; charset = utf-8")
+            self.send_header("content-type", "text/javascript; charset = utf-8")
             # header 종료
             self.end_headers()
             # 파일 읽기(main.js 내용에 대한 읽기)
-            with open("main.js","r",encoding="utf-8")as f:
+            with open("main.js", "r", encoding="utf-8") as f:
                 js_content = f.read()
 
             # js_content에 대해 값을 쓰기
@@ -431,7 +509,7 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 에러 발생
             self.send_error(404)
             # 경로를 찾을 수 없다며 print
-            print("경로를 찾을 수 없습니다.",self.path)
+            print("경로를 찾을 수 없습니다.", self.path)
 
 
 # 포트번호 8000
