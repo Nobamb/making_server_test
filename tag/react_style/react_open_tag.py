@@ -38,8 +38,3 @@ def react_open_tag(tag_name, **props):
     result = f"<{tag_name}{props_value}>"
     # result 반환
     return result
-
-
-# 테스트3
-doctype = react_open_tag("!DOCTYPE",html="")
-print(doctype)
