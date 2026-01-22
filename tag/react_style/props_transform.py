@@ -40,14 +40,3 @@ def props_transform(props):
 
     # props_value 반환
     return props_value
-
-# 테스트
-props = {
-    
-    "class" : "hello",
-    "type" : ""
-}
-
-props_value = props_transform(props)
-
-print(props_value)
