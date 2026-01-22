@@ -68,6 +68,6 @@ def react_open_close_tag(tag_name, *children, **props):
     return result
 
 
-# 테스트
-div = react_open_close_tag("div","안녕",className = "hello")
-print(div)
+# # 테스트
+# div = react_open_close_tag("div","안녕",className = "hello")
+# print(div)
