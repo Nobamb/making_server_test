@@ -10,3 +10,30 @@
 # props를 items()로 분해하여 key, value로 나누기
 # children은 join을 통해 묶기
 # f-string을 통해 문자열들 한번에 정리한 후 반환
+
+def react_tag(tag_name, *children, **props):
+    # props 키와 키값을 받을 배열 초기화
+    props_arr = []
+    
+    # props 딕셔너리를 분해
+    # items메소드를 통해 value까지 나타내기
+    for key, value in props.items():
+        # key, value를 문자열로 묶어서 표현
+        key_value = f"{key}={value}"
+        # key_value를 props_arr에 담음
+        # append 방식으로 담아보기
+        props_arr.append(key_value)
+    
+    # props_arr 다 담았다면 join을 통해 묶음
+    # 앞에 띄어쓰기를 기준으로 문자열 넣기
+    props_value = " ".join(props_arr)
+    # children도 다 담았다면 join을 통해 묶음
+    # 기본 값들끼리 묶기
+    children_value = "".join(children)
+    
+    # 한번에 묶기(f-string)
+    # result
+    result = f"<{tag_name}{props_value}>{children_value}</{tag_name}>"
+    
+    # result 반환
+    return result
