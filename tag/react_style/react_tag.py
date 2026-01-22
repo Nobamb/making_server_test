@@ -20,9 +20,14 @@ def react_tag(tag_name,**props):
         # class로 변경
         if key == "className":
             key = "class"
-        
-        # key, value를 문자열로 묶어서 표현
-        key_value = f' {key}="{value}"'
+        # value가 빈문자열이면
+        if value == "":
+            # key만 전달
+            key_value = f" {key}" 
+        # 아니라면
+        else:
+            # key, value를 문자열로 묶어서 표현
+            key_value = f' {key}="{value}"'
         # key_value를 props_arr에 담음
         # append 방식으로 담아보기
         props_arr.append(key_value)
@@ -36,3 +41,9 @@ def react_tag(tag_name,**props):
     
     # result 반환
     return result
+
+
+# 테스트
+div = react_tag("div",className = "")
+# 출력
+print(div)
