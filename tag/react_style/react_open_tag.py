@@ -16,6 +16,10 @@ def react_open_tag(tag_name, **props):
     # props의 key, value를 for문을 통해 순회
     # items()를 사용하여 value까지 꺼내오기 편하게 지정
     for key, value in props.items():
+        # 만약에 key가 className이면
+        # class로 변경
+        if key == "className":
+            key = "class"
         # props_arr에 추가할 문자열 지정
         # key = value의 형태
         key_value = f' {key}="{value}"'
@@ -23,9 +27,14 @@ def react_open_tag(tag_name, **props):
         props_arr.append(key_value)
     # 추가가 완료되면 join으로 묶기
     props_value = "".join(props_arr)
-    
+
     # tag_name, props_value를 통해 open_tag 작성
     # result의 형태로 지정
     result = f"<{tag_name}{props_value}>"
     # result 반환
     return result
+
+
+# 테스트2
+div = react_open_tag("div", className="hello")
+print(div)
