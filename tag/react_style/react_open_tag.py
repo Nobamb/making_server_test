@@ -53,6 +53,6 @@ def react_open_tag(tag_name, **props):
     return result
 
 
-# 테스트
-div = react_open_tag("div",className = "hello")
-print(div)
+# # 테스트
+# div = react_open_tag("div",className = "hello")
+# print(div)
