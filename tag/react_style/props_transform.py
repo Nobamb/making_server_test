@@ -4,5 +4,7 @@
 # key가 className일 때
 # key를 class로 변경
 # 분해한 key value 문자열화
+# value가 빈 문자열일 때
+# key만 전달하여 문자열화
 # 문자열화한 값을 배열에 추가
 # 배열에 추가 후 join을 통해 반환
