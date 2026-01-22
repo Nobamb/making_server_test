@@ -10,10 +10,35 @@ from tag.basic_tag_complete import basic_tag_complete
 from tag.open_tag import open_tag
 from tag.open_close_tag import open_close_tag
 
+# react_style의 tag들 가져오기
+from tag.react_style.react_tag import react_tag
+from tag.react_style.react_open_tag import react_open_tag
+from tag.react_style.react_open_close_tag import react_open_close_tag
+
+
+
 
 # basehttp 클래스 오버라이드
 # maslow_server
 class MaslowServer(BaseHTTPRequestHandler):
+    # post 메소드 받음
+    # 테스트
+    def do_POST(self):
+        # 200 코드 전달
+        self.send_response(200)
+        # 전송할 header 지정
+        # content-type
+        # text/html
+        self.send_header("content-type","text/html; charset=utf-8")
+        # header 전송 완료
+        self.end_headers()
+        
+        # 전송 완료 테스트
+        # 내가 직접 작성한 react_style의 태그 함수들 가져오기
+        
+        
+
+
     # get메소드 받음
     def do_GET(self):
         # 만약에 메인 경로일때(""또는 "/")
