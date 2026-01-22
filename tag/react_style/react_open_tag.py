@@ -1,5 +1,5 @@
 # props_transform 가져오기
-from props_transform import props_transform
+from .props_transform import props_transform
 
 
 
