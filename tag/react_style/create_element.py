@@ -16,7 +16,7 @@ def create_element(tag_name, *children,**props):
     # value까지 꺼내오기 위해 items() 사용
     for key, value in props.items():
         # tag_props에 key, value 추가
-        tag_props += f"{key}={value}"
+        tag_props += f" {key}={value}"
         
     # children을 분해
     # ""을 기반으로
@@ -33,6 +33,6 @@ def create_element(tag_name, *children,**props):
 
 
 # 테스트
-hello = create_element("div",["안녕"],{"class":"hello"})
+hello = create_element("div","안녕","반가워",className="hello")
 
 print(hello)
