@@ -1,5 +1,5 @@
 # props_transform 가져옴
-from props_transform import props_transform
+from .props_transform import props_transform
 
 # 리액트 스타일대로 커스텀 태그를 만들어보기
 # (열고 닫으면서 children 추가)
