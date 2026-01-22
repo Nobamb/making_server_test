@@ -17,7 +17,7 @@ def props_transform(props):
     # props를 분해
     # key, value를 나눔
     # items로 key, value를 가져오도록 함
-    for key, value in props:
+    for key, value in props.items():
         # 만약에 key가 className이면
         if key == "className":
             # class로 변경
@@ -40,3 +40,14 @@ def props_transform(props):
 
     # props_value 반환
     return props_value
+
+# 테스트
+props = {
+    
+    "class" : "hello",
+    "type" : ""
+}
+
+props_value = props_transform(props)
+
+print(props_value)
