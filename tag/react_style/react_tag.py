@@ -1,5 +1,5 @@
 # props_transform 가져오기(객체를 문자열로)
-from props_transform import props_transform
+from .props_transform import props_transform
 
 # 리액트 스타일대로 커스텀 태그를 만들어보기
 # (한번에 열고 닫는 태그)
