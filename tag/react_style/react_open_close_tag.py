@@ -1,6 +1,3 @@
-# react_open_tag가져오기
-from react_open_tag import react_open_tag
-
 # 리액트 스타일대로 커스텀 태그를 만들어보기
 # (열고 닫으면서 children 추가)
 # 태그명, children, props를 받음
@@ -14,19 +11,44 @@ from react_open_tag import react_open_tag
 # props를 items()로 분해하여 key, value로 나누기
 # children은 join을 통해 묶기
 # f-string을 통해 문자열들 한번에 정리한 후 반환
-# react_open_tag를 가져와서 사용
+# react_open_tag를 가져와서 사용하려 했으나
+# react_open_close_tag에서 props를 딕셔너리로 변환한 채
+# react_open_tag에 props에 넣는 문제 발생
+# react_open_tag는 key="value" 형태를 받기에
+# 별도로 만들어야겠음
 
 
 def react_open_close_tag(tag_name, *children, **props):
-    # react_open_tag 가져오기
-    # children, props 가져오기
-    open_tag = react_open_tag(tag_name,props)
+    
+    # props를 받을 배열(props_arr) 초기화
+    props_arr = []
+    
+    # props의 key, value를 나눔
+    # props를 items()의 형태로 변환하여
+    # key와 value를 가져옴
+    for key, value in props.items():
+        # key,value를 한번에 문자열(f-string)로 묶은
+        # key_value 지정
+        key_value = f" {key}={value}"
+        # props_arr에 추가
+        props_arr.append(key_value)
+    
+    
+    # props_arr를 따로 join 메서드를 통해 한 문자열로 묶기
+    props_value = "".join(props_arr)
+    
     # children을 따로 join메서드를 통해 한 문자열로 묶기
     # \n을 통해 문자열을 들여쓰기로 나눔
     children_value = "\n".join(children)
     
     # children_value를 open_tag와 합쳐서 문자열의 형태로 만들기
-    result = f"{open_tag}{children_value}</{open_tag}>"
+    result = f"<{tag_name}{props_value}>{children_value}</{tag_name}>"
     
     # result 반환
     return result
+
+
+
+# 테스트
+hello = react_open_close_tag("div","안녕",className = "hello")
+print(hello)
