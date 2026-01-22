@@ -41,9 +41,3 @@ def react_tag(tag_name,**props):
     
     # result 반환
     return result
-
-
-# 테스트
-div = react_tag("div",className = "")
-# 출력
-print(div)
