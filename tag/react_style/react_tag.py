@@ -18,8 +18,14 @@ def react_tag(tag_name, *children, **props):
     # props 딕셔너리를 분해
     # items메소드를 통해 value까지 나타내기
     for key, value in props.items():
+        
+        # 만약에 key가 className이면
+        # class로 변경
+        if key == "className":
+            key = "class"
+        
         # key, value를 문자열로 묶어서 표현
-        key_value = f" {key}={value}"
+        key_value = f' {key}="{value}"'
         # key_value를 props_arr에 담음
         # append 방식으로 담아보기
         props_arr.append(key_value)
@@ -36,3 +42,9 @@ def react_tag(tag_name, *children, **props):
     
     # result 반환
     return result
+
+
+
+# 테스트
+hello = react_tag("div","안녕하세요",className ="hello")
+print(hello)
