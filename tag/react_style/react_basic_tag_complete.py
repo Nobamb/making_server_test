@@ -18,3 +18,6 @@ from react_open_close_tag import react_open_close_tag
 # </body>
 # </html>
 
+# 함수명 react_basic_tag_complete
+def react_basic_tag_complete():
+    pass
