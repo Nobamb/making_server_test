@@ -21,3 +21,15 @@ class TestBasicServer(BaseHTTPRequestHandler):
         # 값을 서버에 띄우도록 내용 전달
         self.wfile.write(result.encode("utf-8"))
         
+        
+        
+        
+# 포트 작성
+port = 8000
+
+# 서버 생성
+server = HTTPServer(("",port),TestBasicServer)
+
+
+# 서버 실행
+server.serve_forever()
