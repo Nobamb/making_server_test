@@ -7,4 +7,17 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 # 서버 구조 작성
 # TestBasicServer
 class TestBasicServer(BaseHTTPRequestHandler):
-    pass
+    # do_GET 메서드 생성
+    def do_GET(self):
+        # 200코드 전달
+        self.send_response(200)
+        # header 전달
+        # content-type text/html
+        self.send_header("content-type","text/html; charset = utf-8")
+        # header 전달 완료
+        self.end_headers()
+        # react_basic_tag_complete 실행값 저장
+        result = react_basic_tag_complete()
+        # 값을 서버에 띄우도록 내용 전달
+        self.wfile.write(result.encode("utf-8"))
+        
