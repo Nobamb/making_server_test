@@ -3,8 +3,6 @@
 # basehttp, httpserver 가져오기
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
-# basic_tag_complete 함수 가져오기
-from tag.basic_tag_complete import basic_tag_complete
 
 # react_basic_tag_complete 함수 가져오기
 from tag.react_style.react_basic_tag_complete import react_basic_tag_complete
