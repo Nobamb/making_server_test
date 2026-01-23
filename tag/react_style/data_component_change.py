@@ -13,3 +13,9 @@ sys.path.append(str(top_path))
 
 # data/maslow_data 데이터를 가져옴
 from data.maslow_data import maslow_data
+
+
+
+# data_component_change 함수 생성
+def data_component_change():
+    pass
