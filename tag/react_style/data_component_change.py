@@ -73,7 +73,7 @@ def data_component_change(data):
         # result에 react_open_close_tag를 통해
         # tag_name, *children_arr,**props를 투입
         # 가변 인자 문법은 파라미터로써도 들어갈 수 있음
-        result = react_open_tag(tag_name,*children_arr,**props)
+        result = react_open_close_tag(tag_name,*children_arr,**props)
         
     # result 반환
     return result
