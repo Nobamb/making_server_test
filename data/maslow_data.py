@@ -38,11 +38,13 @@ maslow_data = [
                 "children": [
                     # h3
                     {
+                        # 글자를 가운데로 정렬(li_title에 사용)
                         "tag_type": "open_close_tag",
                         "tag_name": "h3",
                         "children": "5단계,\n자아실현의\n욕구",
                         "props": {
-                            "className": "width100per-height20per back-color-blue vertical-horizental-center"
+                            # li_title = "text-align-center"
+                            "className": "text-align-center"
                         },
                     }
                 ],
@@ -61,7 +63,8 @@ maslow_data = [
                         "tag_name": "h3",
                         "children": "4단계,\n인정의 욕구",
                         "props": {
-                            "className": "width100per-height20per back-color-blue vertical-horizental-center"
+                            # li_title = "text-align-center"
+                            "className": "text-align-center"
                         },
                     }
                 ],
@@ -80,7 +83,8 @@ maslow_data = [
                         "tag_name": "h3",
                         "children": "3단계,\n소속감 또는 애정의 욕구",
                         "props": {
-                            "className": "width100per-height20per back-color-blue vertical-horizental-center"
+                            # li_title = "text-align-center"
+                            "className": "text-align-center"
                         },
                     }
                 ],
@@ -99,7 +103,8 @@ maslow_data = [
                         "tag_name": "h3",
                         "children": "2단계,\n안전과 관련된 욕구",
                         "props": {
-                            "className": "width100per-height20per back-color-blue vertical-horizental-center"
+                            # li_title = "text-align-center"
+                            "className": "text-align-center"
                         },
                     }
                 ],
@@ -118,7 +123,8 @@ maslow_data = [
                         "tag_name": "h3",
                         "children": "1단계,\n기본 인권과 관련된 욕구",
                         "props": {
-                            "className": "width100per-height20per back-color-blue vertical-horizental-center"
+                            # li_title = "text-align-center"
+                            "className": "text-align-center"
                         },
                     }
                 ],
@@ -208,3 +214,36 @@ maslow_data = [
     
 
 ]
+
+
+
+
+
+    
+    # # 매슬로우의 욕구 이론 피라미드 5단계 속성값
+    # li_level5 = "width100per-height20per back-color-blue vertical-horizental-center"
+    
+    # # 매슬로우의 욕구 이론 피라미드 4단계 속성값
+    # li_level4 = "width100per-height20per back-color-green vertical-horizental-center"
+    
+    # # 매슬로우의 욕구 이론 피라미드 3단계 속성값
+    # li_level3 = "width100per-height20per back-color-yellow vertical-horizental-center"
+    
+    # # 매슬로우의 욕구 이론 피라미드 2단계 속성값
+    # li_level2 = "width100per-height20per back-color-orange vertical-horizental-center"
+    
+    # # 매슬로우의 욕구 이론 피라미드 1단계 속성값
+    # li_level1 = "width100per-height20per back-color-red vertical-horizental-center"
+    
+    # # 매슬로우의 욕구 이론 피라미드 속성값
+    # ul_triangle = "triangle back-color-gray-bbb full-size flex-vertical-arrange position-absolute"
+    
+    # # 매슬로우의 욕구 이론에 대한 설명들 li 속성값 
+    # li_text = "width100per-height20per opacity0 border-radius back-color-gray-bbb pad-10"
+    
+    
+    # # 매슬로우의 욕구 이론에 대한 설명들 ul 속성값
+    # ul_text = "full-size position-absolute flex-vertical-arrange off"
+    
+    # # ul들을 모아놓은 div 속성값
+    # div_in_ul = "width-1000px height-1000px position-relative"
