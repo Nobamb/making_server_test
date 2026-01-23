@@ -1,7 +1,9 @@
 # react_style의 태그들 가져옴
-from react_tag import react_tag
-from react_open_tag import react_open_tag
-from react_open_close_tag import react_open_close_tag
+from .react_tag import react_tag
+from .react_open_tag import react_open_tag
+from .react_open_close_tag import react_open_close_tag
+
+
 
 # 기본 형식의 html 구조 생성
 # <!DOCTYPE html>
@@ -26,7 +28,7 @@ def react_basic_tag_complete(title_value="document", head_value="", body_value="
     # doctype
     # react_open_tag
     # html 타입
-    doctype = react_open_tag("!DOCTYPE","html")
+    doctype = react_open_tag("!DOCTYPE",html="")
     # <meta charset="UTF-8">
     # react_open_tag사용
     # 태그명 meta
@@ -75,7 +77,7 @@ def react_basic_tag_complete(title_value="document", head_value="", body_value="
 
 
 
-# 테스트 
-result = react_basic_tag_complete()
-# 출력
-print(result)
+# # 테스트 
+# result = react_basic_tag_complete()
+# # 출력
+# print(result)
