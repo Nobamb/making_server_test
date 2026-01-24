@@ -26,8 +26,14 @@ class ReactTag:
         # key, value를 동시에 가져옴
         # props는 item()으로 키와 키값 분해
         for key, value in self.__props.items():
+
+            # key가 className이면
+            # class로 변경
+            if key == "className":
+                key = "class"
+
             # value가 빈문자열일 때
-            if key == "":
+            if value == "":
                 # key 값을 문자열화
                 props_value = f" {key}"
             # 빈 문자열이 아니면
@@ -56,8 +62,12 @@ class ReactTag:
         # key, value를 동시에 가져옴
         # props는 item()으로 키와 키값 분해
         for key, value in self.__props.items():
+            # key가 className이면
+            # class로 변경
+            if key == "className":
+                key = "class"
             # value가 빈문자열일 때
-            if key == "":
+            if value == "":
                 # key 값을 문자열화
                 props_value = f" {key}"
             # 빈 문자열이 아니면
@@ -89,28 +99,27 @@ class ReactTag:
         return result
 
 
-
 # 테스트
 # <div className = "hello" />
-tag1 = ReactTag("div",className = "hello")
+tag1 = ReactTag("div", className="hello")
 tag1_result = tag1.get_tag()
 # <div className />
-tag2 = ReactTag("div",className = "")
+tag2 = ReactTag("div", className="")
 tag2_result = tag2.get_tag()
 # <div className = "bye">
-tag3 = ReactTag("div", className = "bye")
+tag3 = ReactTag("div", className="bye")
 tag3_result = tag3.get_open_tag()
 
 # <div className>
-tag4 = ReactTag("div", className = "")
+tag4 = ReactTag("div", className="")
 tag4_result = tag4.get_open_tag()
 
 # <div className = "hello"></div>
-tag5 = ReactTag("div", className = "hello")
+tag5 = ReactTag("div", className="hello")
 tag5_result = tag5.get_open_close_tag()
 
 # <div className = "hello">안녕</div>
-tag6 = ReactTag("div", "안녕",className = "hello")
+tag6 = ReactTag("div", "안녕", className="hello")
 tag6_result = tag6.get_open_close_tag()
 
 
