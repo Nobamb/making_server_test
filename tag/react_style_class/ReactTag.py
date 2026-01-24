@@ -37,6 +37,9 @@ class ReactTag:
         # 열고 닫는 태그의 형태로 전달
         result = f"<{self.__tag_name}{props_result}/>"
 
+        # result 반환
+        return result
+
     # get_open_tag(열기만 하는 태그 만들어줌)
     def get_open_tag(self):
 
@@ -57,3 +60,21 @@ class ReactTag:
 
         # 열고 닫는 태그의 형태로 전달
         result = f"<{self.__tag_name}{props_result}>"
+        # result 반환
+        return result
+
+    # get_open_tag(열고 닫으면서 children 추가하는 태그 만들어줌)
+    def get_open_close_tag(self):
+        # get_open_tag가져옴
+        tag_open = self.get_open_tag(self)
+        # 튜플 값 children join으로 묶기
+        children_value = "".join(self.__children)
+        # 닫는 태그 가져오기
+        tag_close = f"</{self.__tag_name}>"
+        # 값 모두 더하기
+        result = tag_open + children_value + tag_close
+        # result 반환
+        return result
+
+
+
