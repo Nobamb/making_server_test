@@ -18,7 +18,7 @@ basic_data = [
     # 타입 : html
     {
         "tag_name": "!DOCTYPE",
-        "tag_type": "open_close_tag",
+        "tag_type": "open_tag",
         "children": "",
         "props": {"html": ""},
     },
@@ -27,7 +27,7 @@ basic_data = [
     # 타입값 ko
     {
         "tag_name": "html",
-        "tag_type": "open_tag",
+        "tag_type": "open_close_tag",
         "children": [
             # head
             {
