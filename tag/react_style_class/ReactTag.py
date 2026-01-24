@@ -26,8 +26,14 @@ class ReactTag:
         # key, value를 동시에 가져옴
         # props는 item()으로 키와 키값 분해
         for key, value in self.__props.items():
-            # key, value 값을 문자열화
-            props_value = f" {key}={value}"
+            # value가 빈문자열일 때
+            if key == "":
+                # key 값을 문자열화
+                props_value = f" {key}"
+            # 빈 문자열이 아니면
+            else:
+                # key, value 값을 문자열화
+                props_value = f" {key}={value}"
             # props_value_arr에 추가
             props_value_arr.append(props_value)
 
@@ -50,8 +56,14 @@ class ReactTag:
         # key, value를 동시에 가져옴
         # props는 item()으로 키와 키값 분해
         for key, value in self.__props.items():
-            # key, value 값을 문자열화
-            props_value = f" {key}={value}"
+            # value가 빈문자열일 때
+            if key == "":
+                # key 값을 문자열화
+                props_value = f" {key}"
+            # 빈 문자열이 아니면
+            else:
+                # key, value 값을 문자열화
+                props_value = f" {key}={value}"
             # props_value_arr에 추가
             props_value_arr.append(props_value)
 
