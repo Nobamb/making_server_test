@@ -52,11 +52,11 @@ def find_name_change_children(data, find_name, change_children):
 def react_basic_tag_complete(title="document", head="", body=""):
 
     
-    
-    
-    # 데이터를 변경
-    # 객체 참조에 의한 호출은 원본 값이 그대로 바뀜
-    find_name_change_children(basic_data[1], "title", title)
+    # basic 순회
+    for data in basic_data:
+        # 데이터를 변경
+        # 객체 참조에 의한 호출은 원본 값이 그대로 바뀜
+        find_name_change_children(data, "title", title)
     
     
 
