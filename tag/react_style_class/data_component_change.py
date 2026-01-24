@@ -9,7 +9,7 @@ get_path = Path(__file__).resolve().parent
 print(get_path)
 
 # 시스템에 추가
-# sys.path.append(str(get_path))
+sys.path.append(str(get_path))
 
 # ReactTag import
 from ReactTag import ReactTag
@@ -83,20 +83,20 @@ def data_component_change(data):
     return result
 
 
-# 테스트
-tag = {
+# # 테스트
+# tag = {
     
-    "tag_type" : "open_close_tag",
-    "tag_name" : "div",
-    "children" : "안녕",
-    "props" : {
+#     "tag_type" : "open_close_tag",
+#     "tag_name" : "div",
+#     "children" : "안녕",
+#     "props" : {
         
-    }
+#     }
     
-}
+# }
 
-# 실행
-test = data_component_change(tag)
+# # 실행
+# test = data_component_change(tag)
 
-# 결과 확인
-print(test)
+# # 결과 확인
+# print(test)
