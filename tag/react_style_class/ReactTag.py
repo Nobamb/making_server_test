@@ -33,7 +33,7 @@ class ReactTag:
             # 빈 문자열이 아니면
             else:
                 # key, value 값을 문자열화
-                props_value = f" {key}={value}"
+                props_value = f' {key}="{value}"'
             # props_value_arr에 추가
             props_value_arr.append(props_value)
 
@@ -63,7 +63,7 @@ class ReactTag:
             # 빈 문자열이 아니면
             else:
                 # key, value 값을 문자열화
-                props_value = f" {key}={value}"
+                props_value = f' {key}="{value}"'
             # props_value_arr에 추가
             props_value_arr.append(props_value)
 
