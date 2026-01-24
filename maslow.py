@@ -6,9 +6,21 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 # basic_tag_complete 함수 가져오기
 from tag.basic_tag_complete import basic_tag_complete
 
-# tag들 가져오기
-from tag.open_tag import open_tag
-from tag.open_close_tag import open_close_tag
+# ReactTag 가져오기
+from tag.react_style_class.ReactTag import ReactTag
+
+# malsow_data 가져오기
+# head_data 가져오기
+from data.head_data import head_data
+from data.maslow_data import maslow_data
+
+# data를 태그로 바꾸는 함수
+from tag.react_style_class.data_component_change import data_component_change
+
+# react_style의 tag들 가져오기
+from tag.react_style.react_tag import react_tag
+from tag.react_style.react_open_tag import react_open_tag
+from tag.react_style.react_open_close_tag import react_open_close_tag
 
 
 # 데이터들 가져오기
@@ -20,6 +32,75 @@ from data.TypesValues import TypesValues
 # basehttp 클래스 오버라이드
 # maslow_server
 class MaslowServer(BaseHTTPRequestHandler):
+    # post 메소드 받음
+    # 테스트
+    def do_POST(self):
+        # 200 코드 전달
+        self.send_response(200)
+        # 전송할 header 지정
+        # content-type
+        # text/html
+        self.send_header("content-type", "text/html; charset=utf-8")
+        # header 전송 완료
+        self.end_headers()
+
+        # 전송 완료 테스트
+        # 내가 직접 작성한 react_style의 태그 함수들 가져오기
+
+        # p
+        # react_open_close_tag
+        # 내용 : POST 요청에 성공했습니다.
+        p = react_open_close_tag("p", "POST 요청에 성공했습니다.")
+
+        # h1
+        # react_open_close_tag
+        # 내용 : 전송 성공
+        h1 = react_open_close_tag("h1", "전송 성공")
+
+        # body
+        # h1 받음
+        # p 받음
+        # react_open_close_tag
+        body = react_open_close_tag("body", h1, p)
+
+        # meta name viewport content width=device-width, initial-scale=1.0
+        # react_open_tag
+        meta_name_viewport = react_open_tag(
+            "meta", name="content", viewport="width=device-width, initial-scale=1.0"
+        )
+
+        # meta charset UTF-8
+        # react_open_tag
+        meta_charset = react_open_tag("meta", charset="UTF-8")
+
+        # title 문서
+        # react_open_close_tag
+        title = react_open_close_tag("title", "문서")
+
+        # head
+        # meta charset UTF-8
+        # meta name viewport content width=device-width, initial-scale=1.0
+        # title 문서
+        # react_open_close_tag
+        head = react_open_close_tag("head", meta_charset, meta_name_viewport, title)
+
+        # html
+        # head, body를 받음
+        # lang타입 ko
+        # react_open_close_tag
+        html = react_open_close_tag("html", head, body, lang="ko")
+
+        # DOCTYPE
+        # html 타입(값 x)
+        # react_open_tag
+        doctype = react_open_tag("!DOCTYPE", html="")
+
+        # result
+        # doctype + html
+        result = doctype + html
+        # result 작성(encode(utf-8))
+        self.wfile.write(result.encode("utf-8"))
+
     # get메소드 받음
     def do_GET(self):
         # 만약에 메인 경로일때(""또는 "/")
@@ -36,323 +117,81 @@ class MaslowServer(BaseHTTPRequestHandler):
             # 헤더 전송 종료
             self.end_headers()
 
-            # h1 태그
-            # open_close_tag
-            # 내용 : 매슬로우의 욕구이론
-            h1 = open_close_tag(
-                TagName.h1,
-                childrens=[TagText.h1],
-            )
+            # 일단 하드코딩하기
+            # 추후에 최적화하기
 
-            # h2 태그
-            # open_close_tag
-            # 내용 : 매슬로우의 욕구 이론에 대해 정리해놓은 것이고 피라미드를 통해 각 단계들을 5단계로 나타내보았다.
-            h2 = open_close_tag(
-                TagName.h2,
-                childrens=[TagText.h2],
-            )
+            #     <!DOCTYPE html>
+            # <html lang="ko">
+            # <head>
+            #     <meta charset="UTF-8">
+            #     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            #     <title>Document</title>
+            # </head>
+            # <body>
 
-            # p 태그
-            # open_close_tag
-            # 내용 : 피라미드의 형태로 위는 최상위의 욕구, 아래는 최하위의 욕구로써, 최하위 1단계에서부터 최상위 5단계까지 이루어지며, 1단계부터 기본적인 생존 욕구, 2단계는 안전에 대한 욕구, 3단계는 애정, 소속에 대한 욕구, 4단계는 인정욕구, 5단계는 자아실현의 욕구로 이루어져있다. 개발자의 성장 단계에 비유하자면 1단계는 잠을 잘수있는 만큼 자는 기본권은 보장된 개발 환경 2단계는 개발을 통해 나의 작업물을 만들었을 때, 미래의 위험성을 이겨내기 위해 현재 발생할 수 있는 내재된 오류 검사 및 버그 수정과 같은 완성도를 끌어올리는 행위 3단계는 진정한 개발자로써 동료 개발자들과의 생각을 공유해보면서 지식의 성장을 이루는 것 4단계는 개발자들 사이에서도 나의 실력이나 서비스를 인정받는 것이고 5단계는 나의 힘으로 나의 서비스를 성공적으로 배포하고 수익도 버는 것이다. 그리고 매슬로우의 주장으로는 주로 낮은 단계에서부터 높은 단계를 이루는 것이 좋다는 이론이지만, 나의 생각은 다소 다르기도 하다. 어떤 사람은 1단계인 먹고자는 행위만을 실천하기 위해 자아실현의 욕구 안전을 포기하면서 극한직업을 하는 경우도 있다. 매슬로우의 욕구에 따르면 단계를 어기지 않은 행위이지만 실제로는 그 사람의 인생은 건강하다고 보기 어렵다. 결국 나의 생각은  매슬로우의 욕구는 순차적으로 이룬다고 해서 절대적으로 옳은 것이 아니라고 보며, 오히려 순차적인 것을 따르려는 것은 욕구에 대한 한계를 정하는 것에 불과하다고 생각한다. 그렇기에 자아실현의 욕구는 단계의 개념이 아닌 가장 큰 절대적인 욕구라고 생각하고 나머지의 욕구들 또한 단계로써 정해질 것이 아닌 인간이 인간답게 살기위한 조건 및 실현되었을 때의 행복도의 차이 정도로 정의하는 것이 맞다고 생각한다.
+            # body 값 담을 데이터 초기화
+            body_arr = []
 
-            p = open_close_tag(
-                TagName.p,
-                childrens=[TagText.p],
-            )
+            # 값 가져오기
+            for data in maslow_data:
+                # data_component_change 사용
+                body_arr_append = data_component_change(data)
+                # body_arr에 추가
+                body_arr.append(body_arr_append)
 
-            # li_level5_title
-            # 내용은 "5단계, 자아실현의 욕구"
-            # open_close_tag
-            # 태그명은 h3
-            # 타입명 class
-            # 타입값 text-align-center
-            # 가장 작은 글자 크기이므로 들여쓰기용 br 추가
-            li_level5_title = open_close_tag(
-                TagName.h3,
-                types=[TypesValues.className],
-                values=[TypesValues.li_title],
-                childrens=[TagText.li_level_title[0]],
-            )
+            # body_arr의 값을 묶기
+            body_value = "".join(body_arr)
 
-            # li 태그
-            # open_close_tag
-            # 타입명 class
-            # 속성값 width100per-height20per back-color-blue vertical-horizental-center
+            # head 값 담을 데이터 초기화
+            head_arr = []
 
-            # 내용은 "5단계: 자아실현의 욕구, 무언가에 대해 스스로 실현을 하기 위한 욕구이며, 보통 자신의 꿈, 그리고 목표와 관련되어있다. 나에게 있어서 자아실현의 욕구는 작게는 매슬로우의 욕구를 서버 사이드 렌더링을 통해 나타내는 것부터 시작해서 매슬로우의 욕구를 서버 구조를 예쁘게도 작성해보고, 크게는 나의 서비스를 만들어보면서 수익도 내보는 것이다."
-            li_level5 = open_close_tag(
-                TagName.li,
-                # 클래스 속성 가로100% 및 세로 20%, 배경 파랑
-                types=[TypesValues.className],
-                values=[TypesValues.li_level5],
-                childrens=[li_level5_title],
-            )
+            # 값 가져오기
+            for data in head_data:
+                # data_component_change 사용
+                head_arr_append = data_component_change(data)
+                # head_arr에 추가
+                head_arr.append(head_arr_append)
 
-            # li_level4_title
-            # 내용은 "4단계, 인정의 욕구"
-            # open_close_tag
-            # 태그명은 h3
-            # 타입명 class
-            # 타입값 text-align-center
-            li_level4_title = open_close_tag(
-                TagName.h3,
-                types=[TypesValues.className],
-                values=[TypesValues.li_title],
-                childrens=[TagText.li_level_title[1]],
-            )
+            # haed_arr의 값을 묶기
+            head_value = "".join(head_arr)
 
-            # li 태그
-            # open_close_tag
-            # 타입명 class
-            # 속성값 width100per-height20per back-color-blue vertical-horizental-center
+            # doctype
+            # html 타입
+            doctype = ReactTag("!DOCTYPE", html="").get_open_tag()
 
-            # 내용은 "4단계 : 인정의 욕구, 남들에게 인정받기 위한 욕구이며, 내가 스스로 해냈을 때 인정받은 적도 있고(자아실현의 욕구도 같이 실현되는 요인), 남이 하라는 것에 대해서 한 것에 대해서도 인정욕구를 실현(단 자아실현의 욕구까진 도달할 수 없음)할 수 있다. 나에게 있어서 인정 욕구란 남에게 적어도 내가 해왔던 노력이나 재능들에 대해 무시당하지 않는 것부터 시작해서 남조차도 나를 인정하거나 존경하는 것이다. 예를 들어서 이전에 클로저의 개념을 정리하여 설명을 했을 때 관련 분야에서 굵직하게 일을 했던 사람들도 나의 설명을 들으러 온것에 대해 인정욕구를 느끼기도 하였다."
-            li_level4 = open_close_tag(
-                TagName.li,
-                # 클래스 속성 가로100% 및 세로 20%, 배경 파랑
-                types=[TypesValues.className],
-                values=[TypesValues.li_level4],
-                childrens=[li_level4_title],
-            )
+            # body
+            # children = meta children, meta name content, title
+            body = ReactTag(
+                "body",body_value
+            ).get_open_close_tag()
 
-            # li_level3_title
-            # 내용은 "3단계, 소속감 또는 애정의 욕구"
-            # open_close_tag
-            # 태그명은 h3
-            # 타입명 class
-            # 타입값 text-align-center
-            li_level3_title = open_close_tag(
-                TagName.h3,
-                types=[TypesValues.className],
-                values=[TypesValues.li_title],
-                childrens=[TagText.li_level_title[2]],
-            )
+            # meta
+            # charset = "UTF-8"
+            meta_charset = ReactTag("meta", charset="UTF-8").get_open_tag()
 
-            # li 태그
-            # open_close_tag
-            # 타입명 class
-            # 속성값 width100per-height20per back-color-blue vertical-horizental-center
+            # meta
+            # name="viewport" content="width=device-width, initial-scale=1.0"
+            meta_name_content = ReactTag(
+                "meta", name="viewport", content="width=device-width, initial-scale=1.0"
+            ).get_open_close_tag()
 
-            # 내용은 li_level3_title, "3단계 : 소속감 또는 애정의 욕구, 어떤 조직 내의 일원으로 인정을 받거나 타인과 교류 관계를 맺는 행위에서 얻는 욕구이다. 나는 주로 나 자신이 개발자라는 생각을 하게 될 때 소속감에 관해서 욕구를 얻었다. 갓 성인이 되었을 때는 생산직이라는 소속에 있었지만 오히려 내 인생의 오점이라고도 생각이 들 정도의 최악의 소속감을 느껴왔고, 이전에 국비학원에서 웹 퍼블리싱에 대해 배울 때에는 당시의 강사님은 나에게 디자이너라는 소속감을 주었다. 물론 영상 편집도 해온 입장에서는 디자이너가 싫지만은 않았지만 개발자라는 목표를 가지고 있던 나에게는 딱히 욕구 실현이 될 정도의 소속감은 들지 않았다. 하지만 현재 개발자라는 소속감에 들게 되었고, 그 덕분에 내가 주말이든 쉬는 날이든 코딩을 하면서 나 자신이 엄연한 개발자라는 자부감을 가지고 있고, 소속감에 대한 욕구를 실현하고 있다."
-            li_level3 = open_close_tag(
-                TagName.li,
-                # 클래스 속성 가로100% 및 세로 20%, 배경 파랑
-                types=[TypesValues.className],
-                values=[TypesValues.li_level3],
-                childrens=[li_level3_title],
-            )
+            # title
+            # children = "document"
+            title = ReactTag("title", "document").get_open_close_tag()
 
-            # li_level2_title
-            # 내용은 "2단계, 안전과 관련된 욕구"
-            # open_close_tag
-            # 태그명은 h3
-            # 타입명 class
-            # 타입값 text-align-center
-            li_level2_title = open_close_tag(
-                TagName.h3,
-                types=[TypesValues.className],
-                values=[TypesValues.li_title],
-                childrens=[TagText.li_level_title[3]],
-            )
+            # head
+            # children = meta charset, meta name content, title
+            head = ReactTag(
+                "head", meta_charset, meta_name_content, title, head_value
+            ).get_open_close_tag()
 
-            # li 태그
-            # open_close_tag
-            # 타입명 class
-            # 속성값 width100per-height20per back-color-blue vertical-horizental-center
+            # html
+            # lang = ko
+            # head, body를 받음
+            html = ReactTag("html", head, body, lang="ko").get_open_close_tag()
 
-            # 내용은 li_level2_title,"2단계 : 안전에 관한 욕구, 앞으로의 일에 대해 두려움을 느끼지 말고 생명에 위협이 되는 일이 없어졌을 때에 해당 욕구를 느낀다. 나는 주로 가끔 전직장에서 근무할 때 2~3주간 제대로 쉬지도 못하고 일을 한 경험이 있었다. 게다가 상사들이 나에게 스트레스도 주면서 일은 가끔 위험한 것도 하거나 잠도 잘 못자는 경우도 생기는 등 정신적으로나 육체적으로까지도 앞으로 나아질까하는 걱정과 두려움에 시달리면서 생명에 대한 위협을 많이 생각하기도 하였다. 그때와 비교하면 지금의 나는 이미 그 회사를 나갔기에 위협적인 상황은 발생하지 않고 안전하다 느낀다."
-            li_level2 = open_close_tag(
-                TagName.li,
-                # 클래스 속성 가로100% 및 세로 20%, 배경 파랑
-                types=[TypesValues.className],
-                values=[TypesValues.li_level2],
-                childrens=[li_level2_title],
-            )
-
-            # li_level1_title
-            # 내용은 "1단계, 기본 인권과 관련된 욕구"
-            # open_close_tag
-            # 태그명은 h3
-            # 타입명 class
-            # 타입값 text-align-center
-            li_level1_title = open_close_tag(
-                TagName.h3,
-                types=[TypesValues.className],
-                values=[TypesValues.li_title],
-                childrens=[TagText.li_level_title[4]],
-            )
-
-            # li 태그
-            # open_close_tag
-            # 타입명 class
-            # 속성값 width100per-height20per back-color-blue vertical-horizental-center
-
-            # 내용은 li_level1_title,"1단계 : 기본 인권과 관련된 욕구, 먹고 자고 쉬는 행위를 말하며, 이런 기본적인 것들에 대해 제대로 누리게 될 때 욕구를 느낀다. 나는 전에 직장에 있을 때에도 그렇고 3달 전까지만 해도 잠에 대한 경각심을 잘 느끼지 못하였기에 잠을 최소한만 자고 하루를 최대한 누려보려고하였다. 하지만 잠이 왜 중요한지를 다시 한번 상기를 해보게 되었고, 최근에는 7~8시간은 자려고 한다. 당연히 이전에 잠을 못잤을 때보다는 더 개운하고 정신적으로 힘든 경향도 덜하게 되었다. 반대로 돈과 관련된 욕구는 버려가고 있다. 이전에는 그냥 먹고 살기 위해서 버텨가면서 돈을 벌었다면 최근에는 돈에 얽매이지 않고 내가 만족할 수 있도록 방향성을 잡아가고 살아가고 있다. 돈이 인간의 기본욕구를 충족시켜줄 것 같지만 꼭 그렇지도 않다. 돈을 벌기 위해 오히려 인간의 기본욕구를 버리게 될 수도 있기 때문이다."
-            li_level1 = open_close_tag(
-                TagName.li,
-                # 클래스 속성 가로100% 및 세로 20%, 배경 파랑
-                types=[TypesValues.className],
-                values=[TypesValues.li_level1],
-                childrens=[li_level1_title],
-            )
-
-            # ul 태그
-            # open_close_tag
-            # childrens로 li들을 받음
-            # 타입 class
-            # 타입값 gray-bbb, triangle full-size .flex-vertical-arrange position-absolute
-
-            ul_triangle = open_close_tag(
-                TagName.ul,
-                types=[TypesValues.className],
-                values=[TypesValues.ul_triangle],
-                childrens=[li_level5, li_level4, li_level3, li_level2, li_level1],
-            )
-
-            # ul_triangle과 형제 태그에서 사용하여
-            # 각 li에 해당하는 내용 보여주기
-            # ul_triangle과 같은 위치
-            # 상위의 div를 생성
-            # div 내부에 ul_triangle, ul_text를 붙임
-            # div에는 relative
-            # ul은 모두 absolute
-            # div는 일정 크기 지정(1000px 1000px)
-            # ul은 div 기준 100% 100% 지정
-
-            # li_level5_text
-            # li 태그
-            # open_close_tag
-            # 태그명 li
-            # 속성명 class
-            # 속성값 width100per-height20per opacity0
-            # 내용 : "5단계: 자아실현의 욕구, 무언가에 대해 스스로 실현을 하기 위한 욕구이며, 보통 자신의 꿈, 그리고 목표와 관련되어있다. 나에게 있어서 자아실현의 욕구는 작게는 매슬로우의 욕구를 서버 사이드 렌더링을 통해 나타내는 것부터 시작해서 매슬로우의 욕구를 서버 구조를 예쁘게도 작성해보고, 크게는 나의 서비스를 만들어보면서 수익도 내보는 것이다."
-
-            li_level5_text = open_close_tag(
-                TagName.li,
-                types=[TypesValues.className],
-                values=[TypesValues.li_text],
-                childrens=[TagText.li_level_text[0]],
-            )
-
-            # li_level4_text
-            # li 태그
-            # open_close_tag
-            # 태그명 li
-            # 속성명 class
-            # 속성값 width100per-height20per opacity0
-            # 내용 : "4단계 : 인정의 욕구, 남들에게 인정받기 위한 욕구이며, 내가 스스로 해냈을 때 인정받은 적도 있고(자아실현의 욕구도 같이 실현되는 요인), 남이 하라는 것에 대해서 한 것에 대해서도 인정욕구를 실현(단 자아실현의 욕구까진 도달할 수 없음)할 수 있다. 나에게 있어서 인정 욕구란 남에게 적어도 내가 해왔던 노력이나 재능들에 대해 무시당하지 않는 것부터 시작해서 남조차도 나를 인정하거나 존경하는 것이다. 예를 들어서 이전에 클로저의 개념을 정리하여 설명을 했을 때 관련 분야에서 굵직하게 일을 했던 사람들도 나의 설명을 들으러 온것에 대해 인정욕구를 느끼기도 하였다."
-
-            li_level4_text = open_close_tag(
-                TagName.li,
-                types=[TypesValues.className],
-                values=[TypesValues.li_text],
-                childrens=[TagText.li_level_text[1]],
-            )
-
-            # li_level3_text
-            # li 태그
-            # open_close_tag
-            # 태그명 li
-            # 속성명 class
-            # 속성값 width100per-height20per opacity0
-            # 내용 : "3단계 : 소속감 또는 애정의 욕구, 어떤 조직 내의 일원으로 인정을 받거나 타인과 교류 관계를 맺는 행위에서 얻는 욕구이다. 나는 주로 나 자신이 개발자라는 생각을 하게 될 때 소속감에 관해서 욕구를 얻었다. 갓 성인이 되었을 때는 생산직이라는 소속에 있었지만 오히려 내 인생의 오점이라고도 생각이 들 정도의 최악의 소속감을 느껴왔고, 이전에 국비학원에서 웹 퍼블리싱에 대해 배울 때에는 당시의 강사님은 나에게 디자이너라는 소속감을 주었다. 물론 영상 편집도 해온 입장에서는 디자이너가 싫지만은 않았지만 개발자라는 목표를 가지고 있던 나에게는 딱히 욕구 실현이 될 정도의 소속감은 들지 않았다. 하지만 현재 개발자라는 소속감에 들게 되었고, 그 덕분에 내가 주말이든 쉬는 날이든 코딩을 하면서 나 자신이 엄연한 개발자라는 자부감을 가지고 있고, 소속감에 대한 욕구를 실현하고 있다."
-
-            li_level3_text = open_close_tag(
-                TagName.li,
-                types=[TypesValues.className],
-                values=[TypesValues.li_text],
-                childrens=[TagText.li_level_text[2]],
-            )
-
-            # li_level2_text
-            # li 태그
-            # open_close_tag
-            # 태그명 li
-            # 속성명 class
-            # 속성값 width100per-height20per opacity0
-            # 내용 : "2단계 : 안전에 관한 욕구, 앞으로의 일에 대해 두려움을 느끼지 말고 생명에 위협이 되는 일이 없어졌을 때에 해당 욕구를 느낀다. 나는 주로 가끔 전직장에서 근무할 때 2~3주간 제대로 쉬지도 못하고 일을 한 경험이 있었다. 게다가 상사들이 나에게 스트레스도 주면서 일은 가끔 위험한 것도 하거나 잠도 잘 못자는 경우도 생기는 등 정신적으로나 육체적으로까지도 앞으로 나아질까하는 걱정과 두려움에 시달리면서 생명에 대한 위협을 많이 생각하기도 하였다. 그때와 비교하면 지금의 나는 이미 그 회사를 나갔기에 위협적인 상황은 발생하지 않고 안전하다 느낀다."
-
-            li_level2_text = open_close_tag(
-                TagName.li,
-                types=[TypesValues.className],
-                values=[TypesValues.li_text],
-                childrens=[TagText.li_level_text[3]],
-            )
-            # li_level1_text
-            # li 태그
-            # open_close_tag
-            # 태그명 li
-            # 속성명 class
-            # 속성값 width100per-height20per opacity0
-            # 내용 : "1단계 : 기본 인권과 관련된 욕구, 먹고 자고 쉬는 행위를 말하며, 이런 기본적인 것들에 대해 제대로 누리게 될 때 욕구를 느낀다. 나는 전에 직장에 있을 때에도 그렇고 3달 전까지만 해도 잠에 대한 경각심을 잘 느끼지 못하였기에 잠을 최소한만 자고 하루를 최대한 누려보려고하였다. 하지만 잠이 왜 중요한지를 다시 한번 상기를 해보게 되었고, 최근에는 7~8시간은 자려고 한다. 당연히 이전에 잠을 못잤을 때보다는 더 개운하고 정신적으로 힘든 경향도 덜하게 되었다. 반대로 돈과 관련된 욕구는 버려가고 있다. 이전에는 그냥 먹고 살기 위해서 버텨가면서 돈을 벌었다면 최근에는 돈에 얽매이지 않고 내가 만족할 수 있도록 방향성을 잡아가고 살아가고 있다. 돈이 인간의 기본욕구를 충족시켜줄 것 같지만 꼭 그렇지도 않다. 돈을 벌기 위해 오히려 인간의 기본욕구를 버리게 될 수도 있기 때문이다."
-
-            li_level1_text = open_close_tag(
-                TagName.li,
-                types=[TypesValues.className],
-                values=[TypesValues.li_text],
-                childrens=[TagText.li_level_text[4]],
-            )
-
-            # ul 태그(내용을 보여줌)
-            # open_close_tag
-            # 태그명은 ul
-            # children은 li를 모두 담음
-            # 타입명 class
-            # 타입값 full-size position-absolute flex-vertical-arrange off
-            ul_text = open_close_tag(
-                TagName.ul,
-                types=[TypesValues.className],
-                values=[TypesValues.ul_text],
-                childrens=[
-                    li_level5_text,
-                    li_level4_text,
-                    li_level3_text,
-                    li_level2_text,
-                    li_level1_text,
-                ],
-            )
-
-            # div 태그(ul_triangle, ul_text를 담음, relative속성)
-            # open_close_tag
-            # 타입명 class
-            # 타입값 width 1000px height 1000px
-            # children = ul_triangle, ul_text
-            div_in_ul = open_close_tag(
-                TagName.div,
-                types=[TypesValues.className],
-                values=[TypesValues.div_in_ul],
-                childrens=[ul_triangle, ul_text],
-            )
-
-            # css 링크
-            # open_tag
-            # 태그명 link
-            # 속성 rel href
-            # 속성값 stylesheet style.css
-            # <link rel="stylesheet" href="style.css">
-
-            css = open_tag(
-                TagName.link,
-                types=[TypesValues.rel, TypesValues.href],
-                values=[TypesValues.stylesheet, TypesValues.css],
-            )
-
-            # main.js 가져올 수 있도록
-            # script 태그 지정
-            # open_close_tag
-            # 태그명 script
-            # 타입명 src
-            # 타입값 main.js
-            script = open_close_tag(TagName.script, types=[TypesValues.src], values=[TypesValues.js])
-
-            # basic_tag_complete 함수 사용해보기
-            # 제목 매슬로우
-            result = basic_tag_complete(
-                title_name="매슬로우",
-                add_body_tags=[h1, h2, p, div_in_ul, script],
-                add_head_tags=[css],
-            )
+            # result
+            result = doctype + html
 
             # 서버에 출력
             # encode utf-8
