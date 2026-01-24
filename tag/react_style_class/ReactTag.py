@@ -16,8 +16,8 @@ class ReactTag:
         # 값 보호
         self.__props = props
 
-    # get_tag(한번에 열고 닫는 태그 만들어줌)
-    def get_tag(self):
+    # props를 분해하는 함수
+    def key_value_dist(self):
 
         # props를 담을 배열 초기화
         props_value_arr = []
@@ -44,7 +44,16 @@ class ReactTag:
             props_value_arr.append(props_value)
 
         # props_value_arr의 값들 묶기
-        props_result = "".join(props_value_arr)
+        result = "".join(props_value_arr)
+        
+        # 반환 
+        return result
+
+    # get_tag(한번에 열고 닫는 태그 만들어줌)
+    def get_tag(self):
+
+        # props를 분해한 값을 props_result에 담음
+        props_result = self.key_value_dist()
 
         # 열고 닫는 태그의 형태로 전달
         result = f"<{self.__tag_name}{props_result}/>"
@@ -55,30 +64,8 @@ class ReactTag:
     # get_open_tag(열기만 하는 태그 만들어줌)
     def get_open_tag(self):
 
-        # props를 담을 배열 초기화
-        props_value_arr = []
-
-        # props 객체를 가져옴
-        # key, value를 동시에 가져옴
-        # props는 item()으로 키와 키값 분해
-        for key, value in self.__props.items():
-            # key가 className이면
-            # class로 변경
-            if key == "className":
-                key = "class"
-            # value가 빈문자열일 때
-            if value == "":
-                # key 값을 문자열화
-                props_value = f" {key}"
-            # 빈 문자열이 아니면
-            else:
-                # key, value 값을 문자열화
-                props_value = f' {key}="{value}"'
-            # props_value_arr에 추가
-            props_value_arr.append(props_value)
-
-        # props_value_arr의 값들 묶기
-        props_result = "".join(props_value_arr)
+        # props를 분해한 값을 props_result에 담음
+        props_result = self.key_value_dist()
 
         # 열고 닫는 태그의 형태로 전달
         result = f"<{self.__tag_name}{props_result}>"
