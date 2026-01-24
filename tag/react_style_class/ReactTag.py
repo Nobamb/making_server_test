@@ -78,7 +78,7 @@ class ReactTag:
     # get_open_tag(열고 닫으면서 children 추가하는 태그 만들어줌)
     def get_open_close_tag(self):
         # get_open_tag가져옴
-        tag_open = self.get_open_tag(self)
+        tag_open = self.get_open_tag()
         # 튜플 값 children join으로 묶기
         children_value = "".join(self.__children)
         # 닫는 태그 가져오기
@@ -90,3 +90,33 @@ class ReactTag:
 
 
 
+# 테스트
+# <div className = "hello" />
+tag1 = ReactTag("div",className = "hello")
+tag1_result = tag1.get_tag()
+# <div className />
+tag2 = ReactTag("div",className = "")
+tag2_result = tag2.get_tag()
+# <div className = "bye">
+tag3 = ReactTag("div", className = "bye")
+tag3_result = tag3.get_open_tag()
+
+# <div className>
+tag4 = ReactTag("div", className = "")
+tag4_result = tag4.get_open_tag()
+
+# <div className = "hello"></div>
+tag5 = ReactTag("div", className = "hello")
+tag5_result = tag5.get_open_close_tag()
+
+# <div className = "hello">안녕</div>
+tag6 = ReactTag("div", "안녕",className = "hello")
+tag6_result = tag6.get_open_close_tag()
+
+
+print(tag1_result)
+print(tag2_result)
+print(tag3_result)
+print(tag4_result)
+print(tag5_result)
+print(tag6_result)
