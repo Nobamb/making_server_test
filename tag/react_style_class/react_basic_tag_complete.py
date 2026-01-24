@@ -22,9 +22,14 @@ from tag.react_style_class.data_component_change import data_component_change
 
 
 
+
+
 # ReactTag를 기반으로
 # 기본 구조를 작성
-def react_basic_tag_complete():
+# title 타이틀 값
+# body 웹 브라우저에 보여줄 값
+# head 추가할 head 설정값
+def react_basic_tag_complete(title="document", head="", body=""):
     
     # basic_data를 담을 배열 초기화
     basic_data_arr = []
@@ -32,6 +37,10 @@ def react_basic_tag_complete():
     
     # basic_data를 순회
     for data in basic_data:
+        # 만약에 data의 tag_name가 title이면
+        if data[1]["children"][0]["children"][2]["tag_name"] == "title":
+            # data의 children에 title값 추가
+           data[1]["children"][0]["children"][2]["children"] = title   
         # 각 데이터에 대해 data_component_change 실행
         # 실행한 값을 배열에 저장
         basic_data_arr_value = data_component_change(data)
@@ -47,3 +56,5 @@ def react_basic_tag_complete():
     
 # 실행 테스트
 print(react_basic_tag_complete())
+# title, body, head 넣어보기
+print(react_basic_tag_complete(title="테스트"))
