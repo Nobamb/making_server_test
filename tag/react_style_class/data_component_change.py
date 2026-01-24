@@ -6,11 +6,16 @@ import sys
 # 상위 폴더를 지정(react_style_class)
 get_path = Path(__file__).resolve().parent
 
+print(get_path)
+
 # 시스템에 추가
-sys.path.append(get_path)
+# sys.path.append(str(get_path))
 
 # ReactTag import
-from react_style_class.ReactTag import ReactTag
+from ReactTag import ReactTag
+
+
+
 
 
 # data를 파라미터로 받음
@@ -47,7 +52,8 @@ def data_component_change(data):
         # 아니라면
         else:
             # 그대로 배열에 추가
-            children_arr.append(item)
+            # 값이 문자열이 아닐 수 있으니까 문자열 변환
+            children_arr.append(str(item))
         
     # children_arr의 값들을 모두 묶음
     children_value = "".join(children_arr)
@@ -75,3 +81,22 @@ def data_component_change(data):
         
     # result를 반환
     return result
+
+
+# 테스트
+tag = {
+    
+    "tag_type" : "open_close_tag",
+    "tag_name" : "div",
+    "children" : "안녕",
+    "props" : {
+        
+    }
+    
+}
+
+# 실행
+test = data_component_change(tag)
+
+# 결과 확인
+print(test)
