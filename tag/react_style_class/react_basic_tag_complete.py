@@ -116,34 +116,34 @@ def react_basic_tag_complete(
     return result
 
 
-# 실행 테스트
-print(react_basic_tag_complete())
+# # 실행 테스트
+# print(react_basic_tag_complete())
 
-# test head
-head = [
-    {
-        # <link rel="stylesheet" href="style.css">
-        "tag_type": "open_tag",
-        "tag_name": "link",
-        "children": [],
-        "props": {"rel": "stylesheet", "href": "style.css"},
-    }
-]
+# # test head
+# head = [
+#     {
+#         # <link rel="stylesheet" href="style.css">
+#         "tag_type": "open_tag",
+#         "tag_name": "link",
+#         "children": [],
+#         "props": {"rel": "stylesheet", "href": "style.css"},
+#     }
+# ]
 
-# test body
-body = [
-    {
-        # <h1>test</h1>
-        "tag_type": "open_close_tag",
-        "tag_name": "h1",
-        "children": "테스트",
-        "props": {},
-    }
-]
+# # test body
+# body = [
+#     {
+#         # <h1>test</h1>
+#         "tag_type": "open_close_tag",
+#         "tag_name": "h1",
+#         "children": "테스트",
+#         "props": {},
+#     }
+# ]
 
 
-# 테스트
-print(react_basic_tag_complete())
+# # 테스트
+# print(react_basic_tag_complete())
 
-# title, body, head 넣어보기
-print(react_basic_tag_complete(title="테스트", head=head, body=body))
+# # title, body, head 넣어보기
+# print(react_basic_tag_complete(title="테스트", head=head, body=body))
