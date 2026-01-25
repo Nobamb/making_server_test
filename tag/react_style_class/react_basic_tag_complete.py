@@ -57,8 +57,7 @@ def find_name_plus_children(data, find_name, change_children):
         # children이 배열이면
         if isinstance(data["children"], list):
             # 해당 값의 children값을 배열 형태로 추가
-            add_children = [change_children]
-            data["children"].extend(add_children)
+            data["children"].extend(change_children)
         # 아니라면
         else:
             # 해당 값의 children값을 기본 데이터 형태로 추가
@@ -83,16 +82,8 @@ def find_name_plus_children(data, find_name, change_children):
 # head 추가할 head 설정값
 def react_basic_tag_complete(
     title="document",
-    head=[
-        {
-            # <link rel="stylesheet" href="style.css">
-            "tag_type": "open_tag",
-            "tag_name": "link",
-            "children": [],
-            "props": {"rel": "stylesheet", "href": "style.css"},
-        }
-    ],
-    body="<h1>테스트</h1>",
+    head=[],
+    body=[],
 ):
 
     # 데이터 복사
@@ -104,9 +95,6 @@ def react_basic_tag_complete(
         # 객체 참조에 의한 호출은 원본 값이 그대로 바뀜
         find_name_change_children(data, "title", title)
         find_name_change_children(data, "body", body)
-
-    # # head 순회
-    for data in head:
         # head를 찾아서 값을 추가
         find_name_plus_children(data, "head", head)
 
@@ -128,19 +116,34 @@ def react_basic_tag_complete(
     return result
 
 
-# 실행 테스트
-print(react_basic_tag_complete())
+# # 실행 테스트
+# print(react_basic_tag_complete())
 
-# test head
-head = [
-    {
-        # <link rel="stylesheet" href="style.css">
-        "tag_type": "open_tag",
-        "tag_name": "link",
-        "children": [],
-        "props": {"rel": "stylesheet", "href": "style.css"},
-    }
-]
+# # test head
+# head = [
+#     {
+#         # <link rel="stylesheet" href="style.css">
+#         "tag_type": "open_tag",
+#         "tag_name": "link",
+#         "children": [],
+#         "props": {"rel": "stylesheet", "href": "style.css"},
+#     }
+# ]
 
-# title, body, head 넣어보기
-print(react_basic_tag_complete(title="테스트", head=head, body="<p>1</p>"))
+# # test body
+# body = [
+#     {
+#         # <h1>test</h1>
+#         "tag_type": "open_close_tag",
+#         "tag_name": "h1",
+#         "children": "테스트",
+#         "props": {},
+#     }
+# ]
+
+
+# # 테스트
+# print(react_basic_tag_complete())
+
+# # title, body, head 넣어보기
+# print(react_basic_tag_complete(title="테스트", head=head, body=body))
