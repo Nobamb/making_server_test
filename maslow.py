@@ -16,6 +16,8 @@ from data.maslow_data import maslow_data
 
 # data를 태그로 바꾸는 함수
 from tag.react_style_class.data_component_change import data_component_change
+# 기본 구조를 만들어주는 함수
+from tag.react_style_class.react_basic_tag_complete import react_basic_tag_complete
 
 # react_style의 tag들 가져오기
 from tag.react_style.react_tag import react_tag
@@ -136,57 +138,64 @@ class MaslowServer(BaseHTTPRequestHandler):
             # body_arr의 값을 묶기
             body_value = "".join(body_arr)
 
-            # head 값 담을 데이터 초기화
-            head_arr = []
+            # # head 값 담을 데이터 초기화
+            # head_arr = []
 
-            # 값 가져오기
-            for data in head_data:
-                # data_component_change 사용
-                head_arr_append = data_component_change(data)
-                # head_arr에 추가
-                head_arr.append(head_arr_append)
+            # # 값 가져오기
+            # for data in head_data:
+            #     # data_component_change 사용
+            #     head_arr_append = data_component_change(data)
+            #     # head_arr에 추가
+            #     head_arr.append(head_arr_append)
 
-            # haed_arr의 값을 묶기
-            head_value = "".join(head_arr)
+            # # haed_arr의 값을 묶기
+            # head_value = "".join(head_arr)
 
-            # doctype
-            # html 타입
-            doctype = ReactTag("!DOCTYPE", html="").get_open_tag()
 
-            # body
-            # children = meta children, meta name content, title
-            body = ReactTag(
-                "body",body_value
-            ).get_open_close_tag()
+            # react_basic_tag_complete 가져오기
+            result = react_basic_tag_complete("매슬로우의 욕구 이론",head_data, body_value)
+
+
+
+
+    #         # doctype
+    #         # html 타입
+    #         doctype = ReactTag("!DOCTYPE", html="").get_open_tag()
+
+    #         # body
+    #         # children = meta children, meta name content, title
+    #         body = ReactTag(
+    #             "body",body_value
+    #         ).get_open_close_tag()
+
+    #         # meta
+    #   # name="viewport" content="width=device-width, initial-scale=1.0"
+    #         meta_name_content = ReactTag(
+    #             "meta", name="viewport", content="width=device-width, initial-scale=1.0"
+    #         ).get_open_close_tag()
+
+    #         # title
+    #         # children = "document"
+    #         title = ReactTag("title", "document").get_open_close_tag()
+
+    #         # head
+    #         # children = meta charset, meta name content, title
+    #         head = ReactTag(
+    #             "head", meta_charset, meta_name_content, title, head_value
+    #         ).get_open_close_tag()
+
+    #         # html
+    #         # lang = ko
+    #         # head, body를 받음
+    #         html = ReactTag("html", head, body, lang="ko").get_open_close_tag()
+
+    #         # result
+    #         result = doctype + html
+      # charset = "UTF-8"
+            # meta_charset = ReactTag("meta", charset="UTF-8").get_open_tag()
 
             # meta
-            # charset = "UTF-8"
-            meta_charset = ReactTag("meta", charset="UTF-8").get_open_tag()
-
-            # meta
-            # name="viewport" content="width=device-width, initial-scale=1.0"
-            meta_name_content = ReactTag(
-                "meta", name="viewport", content="width=device-width, initial-scale=1.0"
-            ).get_open_close_tag()
-
-            # title
-            # children = "document"
-            title = ReactTag("title", "document").get_open_close_tag()
-
-            # head
-            # children = meta charset, meta name content, title
-            head = ReactTag(
-                "head", meta_charset, meta_name_content, title, head_value
-            ).get_open_close_tag()
-
-            # html
-            # lang = ko
-            # head, body를 받음
-            html = ReactTag("html", head, body, lang="ko").get_open_close_tag()
-
-            # result
-            result = doctype + html
-
+            
             # 서버에 출력
             # encode utf-8
             self.wfile.write(result.encode("utf-8"))
