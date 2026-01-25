@@ -54,11 +54,13 @@ def find_name_plus_children(data, find_name, change_children):
 
     # 만약에 tag_name 값이 find_name와 동일하면
     if data["tag_name"] == find_name:
+
+        # print(f"찾음, {find_name}")
+
         # children이 배열이면
         if isinstance(data["children"], list):
             # 해당 값의 children값을 배열 형태로 추가
-            add_children = [change_children]
-            data["children"].extend(add_children)
+            data["children"].extend(change_children)
         # 아니라면
         else:
             # 해당 값의 children값을 기본 데이터 형태로 추가
@@ -83,15 +85,7 @@ def find_name_plus_children(data, find_name, change_children):
 # head 추가할 head 설정값
 def react_basic_tag_complete(
     title="document",
-    head=[
-        {
-            # <link rel="stylesheet" href="style.css">
-            "tag_type": "open_tag",
-            "tag_name": "link",
-            "children": [],
-            "props": {"rel": "stylesheet", "href": "style.css"},
-        }
-    ],
+    head=[],
     body="<h1>테스트</h1>",
 ):
 
@@ -104,11 +98,10 @@ def react_basic_tag_complete(
         # 객체 참조에 의한 호출은 원본 값이 그대로 바뀜
         find_name_change_children(data, "title", title)
         find_name_change_children(data, "body", body)
-
-    # # head 순회
-    for data in head:
-        # head를 찾아서 값을 추가
-        find_name_plus_children(data, "head", head)
+        # 만약에 head가 list이면서 비어있지 않을 때
+        if isinstance(head, list) and head != []:
+            # head를 찾아서 값을 추가
+            find_name_plus_children(data, "head", head)
 
     # basic_data를 담을 배열 초기화
     basic_data_arr = []
